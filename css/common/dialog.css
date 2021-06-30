@@ -1,41 +1,192 @@
-.m-dialog{
+.m-dialog {}
 
+.m-dialog .dialog-modal {
+    opacity: .5;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: black;
+    z-index: 999;
 }
 
-    .m-dialog .dialog-modal{
-        opacity: .5;
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        background-color: black;
-        z-index: 999;
-    }
-    .m-dialog .dialog-content{
-        position: absolute;
-        width: 900px;
-        height: 800px;
-        background-color: #ffffff;
-        z-index: 1000;
-        top: calc( 50% - 400px);
-        left: calc( 50% - 400px);
-    }
-        .m-dialog .dialog-content .dialog-header{
-            width: 100%;
-            height: 60px;
-            background-color: red;
-            display: flex;
-            justify-content: space-between;
-        
-        }
-            .m-dialog .dialog-content .dialog-header .dialog-header-title{
-                padding: 24px;
-                font-family: GoogleSans-Regular;
-                font-size: 26px;
-            
-            }
-            .m-dialog .dialog-content .dialog-header .dialog-header-close{
-                
-            
-            }
+.m-dialog .dialog-content {
+    position: absolute;
+    width: 650px;
+    height: 800px;
+    background-color: #ffffff;
+    z-index: 1000;
+    top: calc( 50% - 350px);
+    left: calc( 50% - 300px);
+}
+
+.m-dialog .dialog-content .dialog-header {
+    width: 100%;
+    height: 60px;
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+}
+
+.m-dialog .dialog-content .dialog-header .dialog-header-title {
+    padding: 24px;
+    font-family: GoogleSans-Regular;
+    font-size: 26px;
+}
+
+.m-dialog .dialog-content .dialog-header .dialog-header-close {}
+
+.dialog_hide {
+    display: none;
+}
+
+.model {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #000000;
+    opacity: .4;
+}
+
+.dialog-content {
+    position: fixed;
+    width: 700px;
+    height: 732px;
+    top: calc(50% - 366px);
+    left: calc(50% - 350px);
+    background-color: white;
+    border-radius: 4px;
+}
+
+.dialog-content .dialog_header {
+    display: flex;
+    height: 48px;
+}
+
+.dialog_header .dialog_title {
+    width: 80%;
+    height: 48px;
+    padding-left: 24px;
+    padding-top: 24px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.dialog_middle {
+    height: 574px;
+    padding: 24px;
+    display: flex;
+}
+
+.column1 {
+    text-align: center;
+    height: 100%;
+    margin-right: 16px;
+}
+
+.column2 {
+    width: 100%;
+}
+
+.column2 .border {
+    height: 4px;
+    width: 84px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    background-color: #019160;
+}
+
+.blank_box {
+    height: 30px;
+    width: 212px;
+    margin-right: 12px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    border: 2px solid #dedede;
+    padding-left: 16px;
+    background-color: transparent;
+}
+
+.blank_box_invalid {
+    border-color: #F65454;
+    outline: none;
+}
+
+.InvalidEmail {
+    display: none;
+}
+
+.date_box {
+    height: 32px;
+    width: 214px;
+    margin-right: 12px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    border: 2px solid #dedede;
+    padding-left: 16px;
+}
+
+.select_box {
+    height: 36px;
+    width: 235px;
+    margin-right: 12px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    border: 2px solid #dedede;
+    padding-left: 13px;
+}
+
+.dialog_footer {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #e5e5e5;
+    border-radius: 0px 0px 4px 4px;
+}
+
+input,
+.select_box {
+    font-family: GoogleSans-Regular;
+    font-size: 12px;
+}
+
+.blank_box:focus,
+.date_box:focus,
+.select_box:focus {
+    border-color: #01b075;
+    outline: none;
+}
+
+.blank_box:hover,
+.date_box:hover,
+.select_box:hover {
+    border-color: #01b075;
+}
+
+.wrapper {
+    position: relative;
+}
+
+.wrapper::after {
+    position: absolute;
+    right: 27px;
+    top: 14px;
+    content: attr(data-placeholder);
+    font-style: italic;
+}
+
+#salary_input {
+    text-align: right;
+    padding-right: 56px;
+    width: 159px;
+}

@@ -1,353 +1,481 @@
 <html>
-    <head>
-        <title>
 
-        </title>
-        <link href="./css/common/body.css"  rel="stylesheet" href="style.css">
-        <link href="./css/common/navbar.css"  rel="stylesheet" href="style.css">
-        <link href="./css/common/content.css"  rel="stylesheet" href="style.css">
-        <link href="./css/common/header.css"  rel="stylesheet" href="style.css">
-        <link href="./css/common/button.css"  rel="stylesheet" href="style.css">
-        <link href="./css/common/footer.css"  rel="stylesheet" href="style.css">
-        <link href="./css/common/input.css"  rel="stylesheet" href="style.css">
-        <link href="./css/common/table.css"  rel="stylesheet" href="style.css">
-        <link href="./css/common/dialog.css"  rel="stylesheet" href="style.css">
-    </head>
-    
-    <body>
-        <div class="navbar">
-            <div class="logo-icon">
-                <div class="toggle-icon"></div>
-                <div class="cukcuk-logo"></div>
+<head>
+    <title>
+
+    </title>
+    <link href="./css/common/body.css" rel="stylesheet" href="style.css">
+    <link href="./css/common/navbar.css" rel="stylesheet" href="style.css">
+    <link href="./css/common/content.css" rel="stylesheet" href="style.css">
+    <link href="./css/common/header.css" rel="stylesheet" href="style.css">
+    <link href="./css/common/button.css" rel="stylesheet" href="style.css">
+    <link href="./css/common/footer.css" rel="stylesheet" href="style.css">
+    <link href="./css/common/input.css" rel="stylesheet" href="style.css">
+    <link href="./css/common/table.css" rel="stylesheet" href="style.css">
+    <link href="./css/common/dialog.css" rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo-icon">
+            <div class="toggle-icon"></div>
+            <div class="cukcuk-logo"></div>
+        </div>
+        <div class="navbar-content">
+            <div class="nav-item">
+                <div class="nav-item-dashboard_icon"></div>
+                <div class="nav-item-text">Tổng quan</div>
             </div>
-            <div class="navbar-content">
-                <div class="nav-item">
-                    <div class="nav-item-dashboard_icon"></div>
-                    <div class="nav-item-text">Tổng quan</div>
-                </div>
-                <div class="nav-item">
-                    <div class="nav-item-report_icon"></div>
-                    <div class="nav-item-text">Báo cáo </div>
-                </div>
-                <div class="nav-item">
-                    <div class="nav-item-shopping_icon"></div>
-                    <div class="nav-item-text">Mua hàng</div>
-                </div>
-                <div class="nav-item">
-                    <div class="nav-item-employee_icon"></div>
-                    <div class="nav-item-text">Danh mục nhân viên</div>
-                </div>
-                <div class="nav-item">
-                    <div class="nav-item-customer_icon"></div>
-                    <div class="nav-item-text">Danh mục khách hàng</div>
-                </div>
-                <div class="nav-item">
-                    <div class="nav-item-setting_icon"></div>
-                    <div class="nav-item-text">Thiết lập hệ thống</div>
-                </div>
+            <div class="nav-item">
+                <div class="nav-item-report_icon"></div>
+                <div class="nav-item-text">Báo cáo </div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-item-shopping_icon"></div>
+                <div class="nav-item-text">Mua hàng</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-item-employee_icon"></div>
+                <div class="nav-item-text">Danh mục nhân viên</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-item-customer_icon"></div>
+                <div class="nav-item-text">Danh mục khách hàng</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-item-setting_icon"></div>
+                <div class="nav-item-text">Thiết lập hệ thống</div>
             </div>
         </div>
-        <div class="content">
-            <div class="header">
-                <div class="header-title">
-                        <div class="header-text">Nhà hàng Biển Đông</div>
-                        <div class="icon-down-arrow"></div>
-                </div>
-                <div class="infor-employee">
-                    <div class="employee-image"></div>
-                    <div class="employee-name">Lê Xuân Việt</div>
-                    <div class="icon-option"></div>
-                </div>
+    </div>
+    <div class="content">
+        <div class="header">
+            <div class="header-title">
+                <div class="header-text">Nhà hàng Biển Đông</div>
+                <div class="icon-down-arrow"></div>
             </div>
-            <div class="content-page">
-                <div class= "content-page-header">
-                    <div class="list-employee">Danh sách nhân viên</div>
-                    <button class="btn btn-add-employee">
+            <div class="infor-employee">
+                <div class="employee-image"></div>
+                <div class="employee-name">Lê Xuân Việt</div>
+                <div class="icon-option"></div>
+            </div>
+        </div>
+        <div class="content-page">
+            <div class="content-page-header">
+                <div class="list-employee">Danh sách nhân viên</div>
+                <button class="btn btn-add-employee">
                         <div class="icon-add-employee"></div>
                         <div class="text-add-employee">Thêm nhân viên</div>
                     </button>
-                </div>
-                <div class="sf_employee">
-                    <div class="">
-                        <input type="text" class="search-employee"  placeholder="Tìm kiếm theo Mã, Tên hoặc Số điện thoại">
-                        <select>
+            </div>
+            <div class="sf_employee">
+                <div class="">
+                    <input type="text" class="search-employee" placeholder="Tìm kiếm theo Mã, Tên hoặc Số điện thoại">
+                    <select>
                             <option value="">Tất cả phòng ban</option>
                         </select>
-                        <select>
+                    <select>
                             <option value="">Tất cả vị trí</option>
                         </select>
-                    </div>
-                    <button class="btn btn-refresh"></button>
                 </div>
-                <div class="grid grid-employee">
-                    <table width="100%" 
-                    >
-                        <thead>
-                            <tr>
-                                <th>Mã nhân viên</th>
-                                <th>Họ và tên </th>
-                                <th>Giới tính</th>
-                                <th>Ngày sinh</th>
-                                <th>Điện thoại</th>
-                                <th>Email</th>
-                                <th>Chức vụ</th>
-                                <th>Phòng ban</th>
-                                <th>Mức lương cơ bản</th>
-                                <th>Tình trạng công việc</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr><tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr><tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-
-                            <tr>
-                                <td>NV00001</td>
-                                <td>Lê Xuân Việt </td>
-                                <td>Nam</td>
-                                <td>01/06/2000</td>
-                                <td>0123456789</td>
-                                <td>vietbadao2k@gmail.com</td>
-                                <td>Fresher Web</td>
-                                <td>Phòng thực tập sinh</td>
-                                <td>10000000</td>
-                                <td>Đang thực tập</td>
-                            </tr>
-                           
-
-                        </tbody>
-                    </table>
-                </div>
-                <div class= "footer">
-                    <div class="footer-first">Hiển thị 1-10/1000 nhân viên</div>
-                    <div class="footer-secound">
-                        <div class="btn-firstpage"></div>
-                        <div class="btn-prevpage"></div>
-                        <button class="btn-one">1</button>
-                        <button class="btn-two">2</button>
-                        <button class="btn-three">3</button>
-                        <button class="btn-four">4</button>
-                        <div class="btn-nextpage"></div>
-                        <div class="btn-lastpage"></div>
-                    </div>
-                    <div class="footer-third">10 nhân viên/trang</div>
-                </div> 
+                <button class="btn btn-refresh"></button>
             </div>
-            
-        </div>
-        <div class="m-dialog dialog-detail">
-            <div class="dialog-modal"></div>
-            <div class="dialog-content">
-                <div class="dialog-header">
-                    <div class="dialog-header-title">THÔNG TIN NHÂN VIÊN</div>
-                    <div class="dialog-header-close">
-                        <button class="btn-close"></button>
-                    </div>
+            <div class="grid grid-employee">
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <th>Mã nhân viên</th>
+                            <th>Họ và tên </th>
+                            <th>Giới tính</th>
+                            <th>Ngày sinh</th>
+                            <th>Điện thoại</th>
+                            <th>Email</th>
+                            <th>Chức vụ</th>
+                            <th>Phòng ban</th>
+                            <th>Mức lương cơ bản</th>
+                            <th>Tình trạng công việc</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+
+                        <tr>
+                            <td>NV00001</td>
+                            <td>Lê Xuân Việt </td>
+                            <td>Nam</td>
+                            <td>01/06/2000</td>
+                            <td>0123456789</td>
+                            <td>vietbadao2k@gmail.com</td>
+                            <td>Fresher Web</td>
+                            <td>Phòng thực tập sinh</td>
+                            <td>10000000</td>
+                            <td>Đang thực tập</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="footer">
+                <div class="footer-first">Hiển thị 1-10/1000 nhân viên</div>
+                <div class="footer-secound">
+                    <div class="btn-firstpage"></div>
+                    <div class="btn-prevpage"></div>
+                    <button class="btn-one">1</button>
+                    <button class="btn-two">2</button>
+                    <button class="btn-three">3</button>
+                    <button class="btn-four">4</button>
+                    <div class="btn-nextpage"></div>
+                    <div class="btn-lastpage"></div>
                 </div>
-                <div class="dialog-body"></div>
+                <div class="footer-third">10 nhân viên/trang</div>
             </div>
         </div>
-        <script src="lib/jquery-3.6.0.min.js"></script> 
-        <script src="js/page/employee.js"></script>                         
-    </body>
+
+    </div>
+    <div class="m-dialog dialog-detail">
+        <div class="dialog-modal"></div>
+        <div class="dialog-content">
+            <div class="dialog-header">
+                <div class="dialog-header-title">THÔNG TIN NHÂN VIÊN</div>
+                <div class="dialog-header-close">
+                    <button class="btn-close"></button>
+                </div>
+            </div>
+            <div class="dialog_middle">
+                <div class="column1">
+                    <!-- <button class="button_avatar"></button> -->
+                    <div style="font-size:11px;">(Vui lòng chọn ảnh có định <br>dạng<br> .jpg,.jpeg,.png,.gif.)</div>
+                </div>
+                <div class="column2">
+                    <div style="font-size: 15px">A. THÔNG TIN CHUNG</div>
+                    <div class="border"></div>
+                    <div style="display:flex;">
+                        <div>
+                            <div style="display:flex;">Mã nhân viên (
+                                <div style="color:red">*</div>)
+                                <div style="color:red; margin-left: 20px;" id="input1" class="InvalidEmail">Yêu cầu nhập</div>
+                            </div>
+                            <input type="text" class="blank_box employeecode" ref="EmployeeCode">
+                        </div>
+                        <div>
+                            <div style="display:flex;">Họ và tên (
+                                <div style="color:red">*</div>)
+                                <div style="color:red; margin-left: 20px;" id="input2" class="InvalidEmail">Yêu cầu nhập</div>
+                            </div>
+                            <input type="text" class="blank_box fullname">
+                        </div>
+                    </div>
+                    <div style="display:flex;">
+                        <div>
+                            <div style="display:flex;">Ngày sinh</div>
+                            <input type="date" class="date_box">
+                        </div>
+                        <div>
+                            <div style="display:flex;">Giới tính</div>
+                            <select class="select_box">
+                                <option value="1">Nam</option>
+                                <option value="0">Nữ</option>
+                                <option value="">Không xác định</option>
+                            </select>
+                            <!-- combobox -->
+                        </div>
+                    </div>
+                    <div style="display:flex;">
+                        <div>
+                            <div style="display:flex;">Số CMTND/ Căn cước (
+                                <div style="color:red">*</div>)
+                                <div style="color:red; margin-left: 10px;" id="input3" class="InvalidEmail">Yêu cầu nhập</div>
+                            </div>
+                            <input type="text" class="blank_box identity">
+                        </div>
+                        <div>
+                            <div style="display:flex;">Ngày cấp</div>
+                            <input type="date" class="date_box">
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display:flex;">Nơi cấp</div>
+                        <input type="text" class="blank_box">
+                    </div>
+                    <div style="display:flex;">
+                        <div>
+                            <div style="display:flex;">Email (
+                                <div style="color:red">*</div>)
+                                <div style="color:red; margin-left: 20px;" id="input4" class="InvalidEmail">Email chưa hợp lệ</div>
+                            </div>
+                            <input type="text" class="blank_box email">
+                        </div>
+                        <div>
+                            <div style="display:flex;">Số điện thoại (
+                                <div style="color:red">*</div>)
+                                <div style="color:red; margin-left: 20px;" id="input5" class="InvalidEmail">Yêu cầu nhập</div>
+                            </div>
+                            <input type="text" class="blank_box phonenumber">
+                        </div>
+                    </div>
+                    <div style="font-size: 15px">B. THÔNG TIN CÔNG VIỆC</div>
+                    <div class="border"></div>
+                    <div style="display:flex;">
+                        <div>
+                            <div style="display:flex;">Vị trí</div>
+                            <select class="select_box" v-model="employee.PositionId">
+                                <option value="148ed882-32b8-218e-9c20-39c2f00615e8">Nhân viên Marketing</option>
+                                <option value="25c6c36e-1668-7d10-6e09-bf1378b8dc91">Thu ngân</option>
+                                <option value="3700cc49-55b5-69ea-4929-a2925c0f334d">Giám đốc</option>
+                            </select>
+                            <!-- combobox -->
+                        </div>
+                        <div>
+                            <div style="display:flex;">Phòng ban</div>
+                            <select class="select_box">
+                                <option value="142cb08f-7c31-21fa-8e90-67245e8b283e">Phòng Marketing</option>
+                                <option value="4e272fc4-7875-78d6-7d32-6a1673ffca7c">Phòng Công nghệ</option>
+                                <option value="17120d02-6ab5-3e43-18cb-66948daf6128">Phòng đào tạo</option>
+                                <option value="469b3ece-744a-45d5-957d-e8c757976496">Phòng Nhân sự</option>
+                            </select>
+                            <!-- combobox -->
+                        </div>
+                    </div>
+                    <div style="display:flex;">
+                        <div>
+                            <div style="display:flex;">Mã số thuế cá nhân</div>
+                            <input type="text" class="blank_box" v-model="employee.PersonalTaxCode">
+                        </div>
+                        <div>
+                            <div style="display:flex;">Mức lương cơ bản</div>
+                            <div class="wrapper" data-placeholder="(VNĐ)">
+                                <input type="text" class="blank_box" id="salary_input">
+                            </div>
+                            <!-- format int input js -->
+                        </div>
+                    </div>
+                    <div style="display:flex;">
+                        <div>
+                            <div style="display:flex;">Ngày gia nhập công ty</div>
+                            <input type="date" class="date_box" v-model="employee.JoinDate">
+                        </div>
+                        <div>
+                            <div style="display:flex;">Tình trạng công việc</div>
+                            <select class="select_box">
+                                <option value="0">Đang thử việc</option>
+                                <option value="1">Đã nghỉ việc</option>
+                                <option value="2">Đang làm việc</option>
+                                <option value="3">Đã nghỉ hưu</option>
+                            </select>
+                            <!-- combobox -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script src="js/page/employee.js"></script>
+</body>
+
 </html>
