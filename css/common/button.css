@@ -43,4 +43,13 @@
     }
     .btn-refresh:focus{
         background-color: #ffffff;
-    }         
+    }    
+    .btn-close{
+        background-image: url('../../Resource/icon/x.svg');
+        background-repeat: no-repeat;;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+        outline: none;
+        border: none;
+    }     
