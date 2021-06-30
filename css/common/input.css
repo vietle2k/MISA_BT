@@ -1,0 +1,38 @@
+input{
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #DBDEFF;
+    font-family: GoogleSans-Regular;
+    width: 330px;
+    color: #bbbbbb;
+    padding-left: 40px;
+}
+    input:focus{
+       outline: none;
+        border-color: #019160;
+    
+    }
+    .search-employee{
+        
+        background-image: url('../../Resource/icon/search.png');
+        background-repeat: no-repeat;
+        background-position: 16px center;
+    }
+
+select{
+    height: 40px;
+    width: 180px;
+    border-radius: 5px;
+    border: 1px solid #DBDEFF;
+    font-family: GoogleSans-Regular;
+    margin-left: 10px;
+    margin-right: 20px;
+    text-align: center;
+    outline: none;
+    text-align-last:center;
+    
+    
+}
+option{
+    text-align: center;
+}

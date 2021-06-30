@@ -1,0 +1,46 @@
+.content{
+  
+    width: calc(100% - 250px);
+}
+    .content .content-page .content-page-header, .sf_employee{
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 18px 20px 16px;
+    }
+        .content .content-page .content-page-header .list-employee{
+            font-family: GoogleSans-Regular;
+            font-size: 23px;
+            font-weight: bold;
+
+        }
+        /* @font-face {
+            font-family: 'GoogleSans-Bold';
+            src: url(../../Resource/font/GoogleSans-Bold.otf) ;
+        } */
+            .icon-add-employee{
+                width: 16px;
+                height: 16px;
+                background-image: url('../../Resource/icon/add.png');
+                background-repeat: no-repeat;;
+                background-size: contain;
+                
+                margin: 5px;
+            }
+            .text-add-employee{
+                text-align: center;
+                /* margin-top: px; */
+            }
+    .content .grid{
+        
+        background-color: silver;
+        height: calc( 100vh - 250px);
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .content .footer{
+        background-color: red;
+        height: 50px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    

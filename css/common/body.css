@@ -1,0 +1,26 @@
+body{
+    font-family: GoogleSans-Regular;
+    font-size: 13px;
+    margin: 0px;
+    display: flex;
+    
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+@font-face {
+    font-family: 'GoogleSans-Regular';
+    src: url(../../Resource/font/GoogleSans-Regular.otf) ;
+}
+@font-face {
+    font-family: 'GoogleSans-Medium';
+    src: url(../../Resource/font/GoogleSans-Medium.otf) ;
+}
+@font-face {
+    font-family: 'GoogleSans-Bold';
+    src: url(../../Resource/font/GoogleSans-Bold.otf) ;
+}
+@font-face {
+    font-family: 'GoogleSans-Italic';
+    src: url(../../Resource/font/GoogleSans-Italic.otf) ;
+}
