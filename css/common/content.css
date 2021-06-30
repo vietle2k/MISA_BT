@@ -32,15 +32,113 @@
             }
     .content .grid{
         
-        
-        height: calc( 100vh - 250px);
+        height: calc( 100vh - 265px);
         margin-left: 20px;
         margin-right: 20px;
+        overflow: scroll;
     }
     .content .footer{
-        background-color: red;
+        display:flex;
+        justify-content: space-between;
         height: 50px;
         margin-left: 20px;
         margin-right: 20px;
+        font-size: 16px;
     }
-    
+        .content .footer .footer-first{
+            padding: 20px 20px 20px 10px;
+        }
+        .content .footer .footer-secound{
+            display: flex;
+            padding: 20px 5px 20px 10px;
+            
+        }
+            .content .footer .footer-secound .btn-firstpage{
+               
+                width: 25px;
+                height: 25px;
+                background-image: url('../../Resource/icon/btn-firstpage.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+                
+                
+            }
+            .content .footer .footer-secound .btn-prevpage{
+               
+                width: 25px;
+                height: 25px;
+                background-image: url('../../Resource/icon/btn-prev-page.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+                margin-right: 10px;
+                 
+            }
+            .content .footer .footer-secound .btn-one{
+               
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                text-align: left;
+                margin-right: 10px;
+                outline: none;
+                cursor: pointer;
+                background-color: #019160;
+                border: none;
+                color:#ffffff;
+                
+            }
+            .content .footer .footer-secound .btn-two{
+               
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                text-align: left;
+                margin-right: 10px;
+                border: none;
+                
+                
+            }
+            .content .footer .footer-secound .btn-three{
+               
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                text-align: left;
+                margin-right: 10px;
+                border: none;
+                
+            }
+            .content .footer .footer-secound .btn-four{
+               
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                text-align: left;
+                margin-right: 10px;
+                border: none;
+                
+            }
+            .content .footer .footer-secound .btn-nextpage{
+               
+                width: 25px;
+                height: 25px;
+                background-image: url('../../Resource/icon/btn-next-page.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+                
+                
+            }
+            .content .footer .footer-secound .btn-lastpage{
+               
+                width: 25px;
+                height: 25px;
+                background-image: url('../../Resource/icon/btn-lastpage.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+                
+                
+            }
+        .content .footer .footer-third{
+            flex: right;
+            padding: 20px 5px 25px 10px;
+        }

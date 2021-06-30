@@ -3,11 +3,11 @@ body{
     font-size: 13px;
     margin: 0px;
     display: flex;
-    
+    overflow: hidden;
 }
-::-webkit-scrollbar { 
+/* ::-webkit-scrollbar { 
     display: none; 
-}
+} */
 @font-face {
     font-family: 'GoogleSans-Regular';
     src: url(../../Resource/font/GoogleSans-Regular.otf) ;

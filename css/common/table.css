@@ -1,15 +1,30 @@
 table{
     border-collapse: collapse;
-
+    
+    height: 500px;
+    position: relative;
 }
 table thead th{
     font-family: GoogleSans-Bold;
     font-weight: bold;
+    
 }
 table tr th,td{
-   height: 48px;
-   border-bottom: 1px solid black;
-   text-align: left;
-   padding-left: 16px;
-
+    height: 48px;
+    border-bottom: 1px solid black;
+    text-align: left;
+    padding-left: 16px;
+    padding : 10px;
+    border-bottom-style: solid;
+    border-bottom-color: #ccc;
 }
+th{
+    background-color:#ffffff;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+       
+}
+    tr:nth-child(even){
+        background-color: #E9EBEE;
+    }
