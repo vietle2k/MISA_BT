@@ -348,7 +348,7 @@
             </div>
             <div class="dialog_middle">
                 <div class="column1">
-                    <!-- <button class="button_avatar"></button> -->
+                    <button class="btn-avatar"></button>
                     <div style="font-size:11px;">(Vui lòng chọn ảnh có định <br>dạng<br> .jpg,.jpeg,.png,.gif.)</div>
                 </div>
                 <div class="column2">
@@ -376,7 +376,7 @@
                             <input type="date" class="date_box">
                         </div>
                         <div>
-                            <div style="display:flex;">Giới tính</div>
+                            <div style="display:flex; margin-left: 10px;">Giới tính</div>
                             <select class="select_box">
                                 <option value="1">Nam</option>
                                 <option value="0">Nữ</option>
@@ -421,9 +421,9 @@
                     <div style="font-size: 15px">B. THÔNG TIN CÔNG VIỆC</div>
                     <div class="border"></div>
                     <div style="display:flex;">
-                        <div>
-                            <div style="display:flex;">Vị trí</div>
-                            <select class="select_box" v-model="employee.PositionId">
+                        <div style=" width: 224px;">
+                            <div style="display:flex; width: 224px;">Vị trí</div>
+                            <select class="select_box" id="id_select_box" >
                                 <option value="148ed882-32b8-218e-9c20-39c2f00615e8">Nhân viên Marketing</option>
                                 <option value="25c6c36e-1668-7d10-6e09-bf1378b8dc91">Thu ngân</option>
                                 <option value="3700cc49-55b5-69ea-4929-a2925c0f334d">Giám đốc</option>
@@ -432,7 +432,7 @@
                         </div>
                         <div>
                             <div style="display:flex;">Phòng ban</div>
-                            <select class="select_box">
+                            <select class="select_box" id="id_select_box">
                                 <option value="142cb08f-7c31-21fa-8e90-67245e8b283e">Phòng Marketing</option>
                                 <option value="4e272fc4-7875-78d6-7d32-6a1673ffca7c">Phòng Công nghệ</option>
                                 <option value="17120d02-6ab5-3e43-18cb-66948daf6128">Phòng đào tạo</option>
@@ -444,7 +444,7 @@
                     <div style="display:flex;">
                         <div>
                             <div style="display:flex;">Mã số thuế cá nhân</div>
-                            <input type="text" class="blank_box" v-model="employee.PersonalTaxCode">
+                            <input type="text" class="blank_box">
                         </div>
                         <div>
                             <div style="display:flex;">Mức lương cơ bản</div>
@@ -460,7 +460,7 @@
                             <input type="date" class="date_box" v-model="employee.JoinDate">
                         </div>
                         <div>
-                            <div style="display:flex;">Tình trạng công việc</div>
+                            <div style="display:flex;margin-left: 10px;">Tình trạng công việc</div>
                             <select class="select_box">
                                 <option value="0">Đang thử việc</option>
                                 <option value="1">Đã nghỉ việc</option>
@@ -472,7 +472,12 @@
                     </div>
                 </div>
             </div>
+            <div class="dialog-footer" >
+                    <button class="btn-save"><div class="save-icon"></div>Lưu</button>
+                    <button class="btn-destroy">Hủy</button>
+            </div>
         </div>
+        
     </div>
     <script src="lib/jquery-3.6.0.min.js"></script>
     <script src="js/page/employee.js"></script>

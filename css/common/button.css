@@ -52,4 +52,69 @@
         height: 20px;
         outline: none;
         border: none;
-    }     
+        background-color: #ffffff;
+       cursor: pointer;
+        margin: 6px;
+    } 
+        .btn-close:hover{
+            background-color: #dedede;
+        }   
+    .btn-avatar{
+        background-image: url('../../Resource/img/default-avatar.jpg');
+        background-repeat: no-repeat;;
+        background-size: contain;
+        width: 180px;
+        height:180px;
+        border-radius: 50%;
+        border: 2px solid #dedede;
+    }
+    .btn-save{
+        
+        width: 100px;
+        height:40px;
+        border-radius: 5px;
+        margin: 10px 20px 10px 16px;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        font-size: 16px;
+        background-color: #019160;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        color:  #ffffff;
+    }
+        .btn-save:hover{
+            background-color: #2FBE8E;
+        }
+        .btn-save:focus{
+            background-color: #01B075;
+        }  
+    .save-icon{
+        background-image: url('../../Resource/icon/save.svg');
+        background-repeat: no-repeat;;
+        background-size: contain;
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+
+    }
+    .btn-destroy{
+        width: 100px;
+        height:40px;
+        border-radius: 5px;
+        margin: 10px 0px 10px 16px;
+        display: flex;
+        align-items: center;
+        text-align: left;;
+        padding-left: 40px;
+        font-size: 16px;
+        background-color: #dedede;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        color:  black;
+    }
+    .btn-destroy:hover{
+        color: red;
+    }
