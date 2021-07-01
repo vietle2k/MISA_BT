@@ -44,7 +44,7 @@
     .btn-refresh:focus{
         background-color: #ffffff;
     }    
-    .btn-close{
+    .btn-close, .btn-warning-close{
         background-image: url('../../Resource/icon/x.svg');
         background-repeat: no-repeat;;
         background-size: contain;
@@ -56,7 +56,7 @@
        cursor: pointer;
         margin: 6px;
     } 
-        .btn-close:hover{
+        .btn-close, .btn-warning-close:hover{
             background-color: #dedede;
         }   
     .btn-avatar{
@@ -117,4 +117,39 @@
     }
     .btn-destroy:hover{
         color: red;
+    }
+    .btn-warning-save{
+        
+        width: 100px;
+        height:40px;
+        border-radius: 5px;
+        margin: 5px 20px 5px 16px;
+        padding-left: 20px;
+        font-size: 16px;
+        text-align: center;
+        background-color: red;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        color:  #ffffff;
+        padding-left: 6px
+    }
+    .btn-warning-destroy{
+        width: 100px;
+        height:40px;
+        border-radius: 5px;
+        margin: 5px 0px 5px 16px;
+        align-items: center;
+        text-align: left;;
+        padding-left: 40px;
+        font-size: 16px;
+        background-color: #dedede;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        color:  black;
+    }
+    .btn-warning-destroy:hover{
+        color: red;
+        background-color: silver;
     }

@@ -1,5 +1,8 @@
 .m-dialog {}
 
+.dialog-hidden{
+    display: none   ;
+}
 .m-dialog .dialog-modal {
     opacity: .5;
     position: fixed;
@@ -36,45 +39,11 @@
     font-size: 26px;
 }
 
-.m-dialog .dialog-content .dialog-header .dialog-header-close {}
+/* .m-dialog .dialog-content .dialog-header .dialog-header-close {} */
 
 .dialog_hide {
     display: none;
 }
-
-/* .model {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    background-color: #000000;
-    opacity: .4;
-}
-
-.dialog-content {
-    position: fixed;
-    width: 700px;
-    height: 732px;
-    top: calc(50% - 366px);
-    left: calc(50% - 350px);
-    background-color: white;
-    border-radius: 4px;
-}
-
-.dialog-content .dialog_header {
-    display: flex;
-    height: 48px;
-}
-
-.dialog_header .dialog_title {
-    width: 80%;
-    height: 48px;
-    padding-left: 24px;
-    padding-top: 24px;
-    font-weight: bold;
-    font-size: 20px;
-} */
 
 .dialog_middle {
     height: 520px;

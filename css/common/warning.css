@@ -1,0 +1,78 @@
+.m-warning{
+    
+}
+.warning-modal {
+    opacity: .5;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: black;
+    z-index: 999;
+}
+.warning-hidden{
+    display: none   ;
+}
+ .warning-content {
+    position: absolute;
+    font-family: GoogleSans-Regular;
+    width: 500px;
+    height: 175px;
+    background-color: #ffffff;
+    z-index: 1000;
+    top: calc( 50% - 350px);
+    left: calc( 50% - 300px);
+}
+    .warning-content .warning-header{
+        width: 100%;
+        height: 50px;
+        
+        display: flex;
+        justify-content: space-between;
+    }
+        .warning-content .warning-header .warning-header-title{
+            padding: 24px;
+            font-family: GoogleSans-Regular;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    .warning-content .warning-middle{
+        width: 100%;
+        height: 75px;
+       
+        display: flex;
+    }   
+        .warning-content .warning-middle .warning-style{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid #dedede;
+            align-items: center;
+            margin: 10px 5px 10px 30px;
+        }
+        .warning-content .warning-middle .icon-warning{
+            background-image: url('../../Resource/icon/warning.svg');
+            background-repeat: no-repeat;;
+            background-size: contain;
+            width: 40px;
+            height: 40px;
+            background-position: center;
+            margin-left: 5px;
+            
+        }
+        .warning-content .warning-middle .warning-middle-text{
+            padding: 10px;
+            font-family: GoogleSans-Regular;
+            font-size: 18px;
+            margin-top: 15px;
+            
+        }
+    .warning-content .warning-footer{
+        width: 100%;
+        height: 50px;
+        background-color: #dedede;;
+        display: flex;
+        align-content: flex-start;
+        flex-flow: row-reverse;
+    }
