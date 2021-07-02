@@ -2,6 +2,7 @@ $(document).ready(function(){
     loadData();
     $('.btn-add-employee').click(function(){
         $('.m-dialog').removeClass('dialog-hidden');
+        $('.employeecode').focus();
     });
     $('.btn-close').click(function(){
         $('.m-dialog').addClass('dialog-hidden');
@@ -9,11 +10,16 @@ $(document).ready(function(){
     $('.btn-destroy').click(function(){
         $('.m-dialog').addClass('dialog-hidden');
     });
-    
+    $('.btn-save').click(function(){
+        $('.m-dialog').addClass('dialog-hidden');
+    });
     $('.btn-warning-close').click(function(){
         $('.dialog-warning').addClass('warning-hidden');
     });
     $('.btn-warning-destroy').click(function(){
+        $('.dialog-warning').addClass('warning-hidden');
+    });
+    $('.btn-warning-save').click(function(){
         $('.dialog-warning').addClass('warning-hidden');
     });
     // $('.tblEmployee tbody tr td').click(function(){
@@ -23,6 +29,33 @@ $(document).ready(function(){
         
         $('.m-warning').removeClass('warning-hidden');
         // $('.dialog-detail').removeClass('dialog-hidden');
+    })
+    $('.salary_employee').on( "keyup", function( event ) {
+      
+      
+        // When user select text in the document, also abort.
+        var selection = window.getSelection().toString();
+        if ( selection !== '' ) {
+          return;
+        }
+        
+        // When the arrow keys are pressed, abort.
+        if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
+          return;
+        }
+        
+        
+        var $this = $( this );
+        
+        // Get the value.
+        var input = $this.val();
+        
+        var input = input.replace(/[\D\s\._\-]+/g, "");
+            input = input ? parseInt( input, 10 ) : 0;
+  
+            $this.val( function() {
+              return ( input === 0 ) ? "" : input.toLocaleString( "it-IT" );
+            } );
     })
 })
 
@@ -40,7 +73,7 @@ function loadData(){
                     <td>`+formatMoney('100000000')+`</td>
                     <td>Đang thực tập</td>
             </tr>`;
-    for(var i = 0; i<10; ++i){
+    for(var i = 0; i<18; ++i){
         $('.tblEmployee tbody').append(trHTML);
     }
 }
@@ -62,5 +95,19 @@ function formatMoney(money){
         return ((index % 3) ? next : (next + '.')) + prev
     }) + ' VNĐ'
 }
+function myFunction() {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
+function warning() {
+    var x = document.getElementById("snackbar2");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+function deleted() {
+    var x = document.getElementById("snackbar3");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
 
-//

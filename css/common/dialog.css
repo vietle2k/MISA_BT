@@ -18,7 +18,7 @@
     position: absolute;
     font-family: GoogleSans-Regular;
     width: 680px;
-    height: 680px;
+    height: 650px;
     background-color: #ffffff;
     z-index: 1000;
     top: calc( 50% - 350px);
@@ -129,7 +129,7 @@
 input,
 .select_box {
     font-family: GoogleSans-Regular;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .blank_box:focus,
@@ -152,7 +152,7 @@ input,
 .wrapper::after {
     position: absolute;
     right: 27px;
-    top: 14px;
+    top: 10px;
     content: attr(data-placeholder);
     font-style: italic;
 }

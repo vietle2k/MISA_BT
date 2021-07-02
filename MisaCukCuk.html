@@ -14,6 +14,7 @@
     <link href="./css/common/table.css" rel="stylesheet" href="style.css">
     <link href="./css/common/dialog.css" rel="stylesheet" href="style.css">
     <link href="./css/common/warning.css" rel="stylesheet" href="style.css">
+    <link href="./css/common/snackbar.css" rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -71,12 +72,20 @@
             </div>
             <div class="sf_employee">
                 <div class="">
-                    <input type="text" class="search-employee" placeholder="Tìm kiếm theo Mã, Tên hoặc Số điện thoại">
+                    <input type="text" class="search-employee" placeholder="Tìm kiếm theo Mã, Tên hoặc Số điện thoại" onfocus="this.placeholder=''" 
+                    onblur="this.placeholder='Tìm kiếm theo Mã, Tên hoặc Số điện thoại'">
                     <select>
                             <option value="">Tất cả phòng ban</option>
+                            <option value="">Nhân viên thu ngân</option>
+                            <option value="">Giám đốc</option>
+                            <option value="">Thu ngân</option>
                         </select>
                     <select>
                             <option value="">Tất cả vị trí</option>
+                            <option value="">Phòng Đào tạo</option>
+                            <option value="">Phòng Công nghệ</option>
+                            <option value="">Phòng Nhân sự</option>
+                            <option value="">Phòng Marketing</option>
                         </select>
                 </div>
                 <button class="btn btn-refresh"></button>
@@ -136,7 +145,7 @@
             <div class="dialog-header">
                 <div class="dialog-header-title">THÔNG TIN NHÂN VIÊN</div>
                 <div class="dialog-header-close">
-                    <button class="btn-close"></button>
+                    <button class="btn-close" onclick="warning()"></button>
                 </div>
             </div>
             <div class="dialog_middle">
@@ -228,7 +237,7 @@
                             <select class="select_box" id="id_select_box">
                                 <option value="142cb08f-7c31-21fa-8e90-67245e8b283e">Phòng Marketing</option>
                                 <option value="4e272fc4-7875-78d6-7d32-6a1673ffca7c">Phòng Công nghệ</option>
-                                <option value="17120d02-6ab5-3e43-18cb-66948daf6128">Phòng đào tạo</option>
+                                <option value="17120d02-6ab5-3e43-18cb-66948daf6128">Phòng Đào tạo</option>
                                 <option value="469b3ece-744a-45d5-957d-e8c757976496">Phòng Nhân sự</option>
                             </select>
                             <!-- combobox -->
@@ -242,7 +251,7 @@
                         <div>
                             <div style="display:flex;">Mức lương cơ bản</div>
                             <div class="wrapper" data-placeholder="(VNĐ)">
-                                <input type="text" class="blank_box" id="salary_input">
+                                <input type="text" class="blank_box salary_employee" id="salary_input">
                             </div>
                             <!-- format int input js -->
                         </div>
@@ -266,8 +275,8 @@
                 </div>
             </div>
             <div class="dialog-footer" >
-                    <button class="btn-save"><div class="save-icon"></div>Lưu</button>
-                    <button class="btn-destroy">Hủy</button>
+                    <button class="btn-save" onclick="myFunction()"><div class="save-icon" ></div>Lưu</button>
+                    <button class="btn-destroy" onclick="warning()">Hủy</button>
             </div>
         </div>
         
@@ -278,7 +287,7 @@
             <div class="warning-header">
                 <div class="warning-header-title">XÓA NHÂN VIÊN</div>
                 <div class="dialog-header-close">
-                    <button class="btn-warning-close"></button>
+                    <button class="btn-warning-close" ></button>
                 </div>
             </div>
             <div class="warning-middle">
@@ -286,12 +295,15 @@
                 <div class="warning-middle-text">Bạn chắc chắn muốn xóa nhân viên này không?</div>
             </div>
             <div class="warning-footer">
-                <button class="btn-warning-save">Xóa</button>
-                <button class="btn-warning-destroy">Hủy</button>
+                <button class="btn-warning-save" onclick="deleted()">Xóa</button>
+                <button class="btn-warning-destroy" >Hủy</button>
             </div>
         </div>
-
+       
     </div>
+    <div id="snackbar"><div class="icon-tick"></div><div style="padding: 12px;font-size: 16px;">Bạn đã thêm nhân viên thành công</div></div>
+    <div id="snackbar2"><div class="icon-exclamation-mark"></div><div style="padding: 12px;font-size: 16px;">Bạn chưa thêm nhân viên thành công</div></div>
+    <div id="snackbar3"><div class="icon-tick"></div><div style="padding: 12px;font-size: 16px;">Bạn đã xóa nhân viên thành công</div></div>
     <script src="lib/jquery-3.6.0.min.js"></script>
     <script src="js/page/employee.js"></script>
 </body>

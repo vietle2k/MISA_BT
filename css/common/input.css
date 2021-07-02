@@ -4,7 +4,7 @@ input{
     border: 1px solid #DBDEFF;
     font-family: GoogleSans-Regular;
     width: 330px;
-    color: #bbbbbb;
+    color: #000000;
     padding-left: 40px;
 }
     input:focus{
@@ -26,11 +26,14 @@ select{
     border: 1px solid #DBDEFF;
     font-family: GoogleSans-Regular;
     margin-left: 10px;
-    margin-right: 20px;
-    text-align: center;
+    margin-right: 5px;
     outline: none;
-    text-align-last:center;
+    /* text-align-last:center; */
+    color: #000000;
+    padding-left: 16px;
 }
-option{
-    text-align: center;
+select *{
+    
+    font-size: 13px;
 }
+
