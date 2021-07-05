@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    var data = getData();
+    console.table(data);
+    buildDataEmployees(data);
     loadData();
     $('.btn-add-employee').click(function(){
         $('.m-dialog').removeClass('dialog-hidden');
@@ -73,13 +76,14 @@ function loadData(){
                     <td>`+formatMoney('100000000')+`</td>
                     <td>Đang thực tập</td>
             </tr>`;
-    for(var i = 0; i<18; ++i){
+    for(var i = 0; i<3; ++i){
         $('.tblEmployee tbody').append(trHTML);
     }
 }
 
 // Định dạng ngày tháng năm
 function formatDate(date){
+    if(date==null) return "";
     var date = new Date(date);
     var date_fm = date.getDate();
     var month_fm = date.getMonth() +1;
@@ -91,10 +95,15 @@ function formatDate(date){
 
 // Định dạng money
 function formatMoney(money){
-    return  money.split('').reverse().reduce((prev, next, index) => {
-        return ((index % 3) ? next : (next + '.')) + prev
-    }) + ' VNĐ'
+    if(money==null) return 0;
+    if(money!=null && money!= 0){
+        return  money.toString().split('').reverse().reduce((prev, next, index) => {
+            return ((index % 3) ? next : (next + '.')) + prev
+        }) + ' VNĐ'
+    }
+    
 }
+
 function myFunction() {
     var x = document.getElementById("snackbar");
     x.className = "show";
@@ -109,5 +118,42 @@ function deleted() {
     var x = document.getElementById("snackbar3");
     x.className = "show";
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+//get data
+function getData(){
+    var employees = null;
+    $.ajax({
+        method: "GET",
+        url: "http://cukcuk.manhnv.net/v1/Employees",
+        data: "null",
+        async: false,
+        contentType: "application/json"
+    }).done(function(response){
+        employees = response;
+    }).fail(function(respone){
+        alert("bi loi roi");
+    });
+    return employees;
+}
+//build data
+function buildDataEmployees(data){
+        $.each(data, function (index, employee) { 
+            var trHTML=$(`<tr>
+                                <td>${employee.EmployeeCode}</td>
+                                <td>${employee.FullName}</td>
+                                <td>${employee.GenderName}</td>
+                                <td>${formatDate(employee.DateOfBirth)}</td>
+                                <td>${employee.PhoneNumber}</td>
+                                <td>${employee.Email}</td>
+                                <td>${employee.PositionName}</td>
+                                <td>${employee.DepartmentName}</td>
+                                <td>${formatMoney(employee.Salary)}</td>
+                                <td>${employee.MartialStatusName}</td>
+                        </tr>`);
+                        trHTML.data('recodeId', employee.EmployeeId);
+             $('.tblEmployee tbody').append(trHTML);
+        });
+        
 }
 
