@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var data = getData();
-    console.table(data);
+    // console.table(data);
     buildDataEmployees(data);
     loadData();
     $('.btn-add-employee').click(function(){
@@ -32,6 +32,33 @@ $(document).ready(function(){
         
         $('.m-warning').removeClass('warning-hidden');
         // $('.dialog-detail').removeClass('dialog-hidden');
+    })
+    $('.nav-item').click(function(e){
+        $('.nav-item').removeClass('editNavbar');
+        e.target.parentElement.classList.add('editNavbar');
+    })
+    $('.content-one').click(function(){
+        
+        $('.content-one').removeClass('clickdropdown');
+        $(this).addClass('clickdropdown');
+    })
+    $('.btn-dropdown').click(function(){
+        $('.dropdown-content').removeClass('hidden');
+        
+        $(this).parent().parent().find('.dropdown-content').toggle();
+    })
+    $('.content-one').click(function(){
+        var a = this;
+        // $(this).parent().removeClass('hidden');
+        // $(this).parent().removeClass('hide');
+        // $(this).parent().addClass('hidden');
+        $(this).parent().toggle();
+        console.log($(this).first());
+    })
+    $('.content-one').hover(function(){
+        document.getElementById('cmm').setAttribute("background-image", "url('../../Resource/icon/check.svg');");
+        console.log("a");
+        // console.log(document.getElementsByClassName('dropdown-content-icon')[0]);
     })
     $('.salary_employee').on( "keyup", function( event ) {
       

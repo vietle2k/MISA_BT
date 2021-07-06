@@ -153,3 +153,23 @@
         color: red;
         background-color: silver;
     }
+    .btn-dropdown{
+        
+        outline: none;
+        height: 40px;
+        width: 40px;
+        padding: 0px;
+        background-color: #ffffff;
+        margin: 0px;
+        border-left: 1px solid #bbbbbb;
+        border-right: none;
+        border-top: none;
+        border-bottom: none;
+        border-radius: 0px;
+    }
+    .btn-dropdown:hover{
+        background-color: #e5e5e5;
+    }
+    .btn-dropdown:focus{
+        background-color: #e5e5e5 ;
+    }

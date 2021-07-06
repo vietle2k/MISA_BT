@@ -71,16 +71,44 @@
                     </button>
             </div>
             <div class="sf_employee">
-                <div class="">
+                <div class="" style="display: flex">
                     <input type="text" class="search-employee" placeholder="Tìm kiếm theo Mã, Tên hoặc Số điện thoại" onfocus="this.placeholder=''" onblur="this.placeholder='Tìm kiếm theo Mã, Tên hoặc Số điện thoại'">
-                    <select>
+                    <!-- <select>
                             <option value="">Tất cả phòng ban</option>
                             <option value="">Phòng Đào tạo</option>
                             <option value="">Phòng Công nghệ</option>
                             <option value="">Phòng Nhân sự</option>
                             <option value="">Phòng Marketing</option>
                             
-                        </select>
+                        </select> -->
+
+                    <div class="dropdown" style="position: relative;">
+                        <div class="dropdown-header">
+                            <div class="dropdown-header-text">Tất cả vị trí</div>
+                            <button class="btn btn-dropdown ">
+                                <div class="dropdown-header-icon"></div>
+                            </button>
+                        </div>
+                        <div class="dropdown-content hide" style=" position: absolute" >
+                            <div class="content-one" style="position: flex;">
+                                <div class="" id="cmm"></div>
+                                <div class="dropdown-content-text">Phòng Công Nghệ</div>
+                            </div>
+                            <div class="content-one" style="position: flex;">
+                                <div class="dropdown-content-icon"></div>
+                                <div class="dropdown-content-text">Phòng Nhân sự</div>
+                            </div>
+                            <div class="content-one" style="position: flex;">
+                                <div class="dropdown-content-icon"></div>
+                                <div class="dropdown-content-text">Phòng Đào tạo</div>
+                            </div>
+                            <div class="content-one border-bt" style="position: flex;">
+                                <div class="dropdown-content-icon"></div>
+                                <div class="dropdown-content-text">Phòng Marketing</div>
+                            </div>
+
+                        </div>
+                    </div>
                     <select>
                             <option value="">Tất cả vị trí</option>
                             <option value="">Nhân viên thu ngân</option>
