@@ -3,51 +3,57 @@ $(document).ready(function() {
     // console.table(data);
     buildDataEmployees(data);
     loadData();
+    // Hiển thị form nhập liệu thêm nhân viên
     $('.btn-add-employee').click(function() {
         $('.m-dialog').removeClass('dialog-hidden');
         $('.employeecode').focus();
     });
+    //Đóng form nhập liệu thêm nhân viên
     $('.btn-close').click(function() {
         $('.m-dialog').addClass('dialog-hidden');
     });
     $('.btn-destroy').click(function() {
         $('.m-dialog').addClass('dialog-hidden');
     });
+    // xác nhận thêm nhân viên
     $('.btn-save').click(function() {
         $('.m-dialog').addClass('dialog-hidden');
     });
+    // Đóng form cảnh báo xóa nhân viên
     $('.btn-warning-close').click(function() {
         $('.dialog-warning').addClass('warning-hidden');
     });
     $('.btn-warning-destroy').click(function() {
         $('.dialog-warning').addClass('warning-hidden');
     });
+    // xác nhận xóa nhân viên
     $('.btn-warning-save').click(function() {
         $('.dialog-warning').addClass('warning-hidden');
     });
-    // $('.tblEmployee tbody tr td').click(function(){
-    //     $('.dialog-warning').removeClass('warning-hidden');
-    // })
+
     $('.tblEmployee tbody tr ').on('click', function() {
 
-        $('.m-warning').removeClass('warning-hidden');
-        // $('.dialog-detail').removeClass('dialog-hidden');
-    })
+            $('.m-warning').removeClass('warning-hidden');
+            // $('.dialog-detail').removeClass('dialog-hidden');
+        })
+        // config navbar-item
     $('.nav-item').click(function(e) {
-        $('.nav-item').removeClass('editNavbar');
-        e.target.parentElement.classList.add('editNavbar');
-    })
-    $('.content-one').click(function() {
+            $('.nav-item').removeClass('editNavbar');
+            e.target.parentElement.classList.add('editNavbar');
+        })
+        // css dropdown customer select vị trí và phòng ban
+        // $('.content-one').click(function() {
 
-        $('.content-one').removeClass('clickdropdown');
-        $(this).addClass('clickdropdown');
-    })
+    //     $('.content-one').removeClass('clickdropdown');
+    //     $(this).addClass('clickdropdown');
+    // })
     $('.content-one').click(function() {
 
         $('.content-one').removeClass('clickdropdown');
         $(this).addClass('clickdropdown');
         $('.content-one').find('.dropdown-content-icon').css('display', 'none');
         $('.clickdropdown').find('.dropdown-content-icon').css('display', 'block');
+        $('.dropdown-header-icon').toggleClass('dropup-header-icon');
     })
     $('.content-two').click(function() {
 
@@ -55,11 +61,21 @@ $(document).ready(function() {
         $(this).addClass('clickdropdown');
         $('.content-two').find('.dropdown-content-icon').css('display', 'none');
         $('.clickdropdown').find('.dropdown-content-icon').css('display', 'block');
+        $('.dropdown-icon').toggleClass('dropup-icon');
     })
     $('.btn-dropdown').click(function() {
         $('.dropdown-content').removeClass('hidden');
+        $('.dropdown-header-icon').toggleClass('dropup-header-icon');
 
         $(this).parent().parent().find('.dropdown-content').toggle();
+        // $('.btn-dropdown').toggleClass('btn-dropup');
+    })
+    $('.btn-dropdown2').click(function() {
+        $('.dropdown-content').removeClass('hidden');
+        $('.dropdown-icon').toggleClass('dropup-icon');
+
+        $(this).parent().parent().find('.dropdown-content').toggle();
+        // $('.btn-dropdown').toggleClass('btn-dropup');
     })
     $('.content-one').click(function() {
         $(this).parent().toggle();
@@ -73,11 +89,7 @@ $(document).ready(function() {
 
 
         })
-        // $('.content-two').click(function() {
-        //     //  
-        //     // console.log(document.getElementsByClassName('dropdown-content-icon')[0]);
-        //     $(this).find('.dropdown-content-icon').toggle();
-        // })
+        // format mức lương cơ bản đúng chuẩn trong form nhập thêm thông tin nhân viên
     $('.salary_employee').on("keyup", function(event) {
 
 
@@ -104,6 +116,9 @@ $(document).ready(function() {
         $this.val(function() {
             return (input === 0) ? "" : input.toLocaleString("it-IT");
         });
+    })
+    $('.shortcut-icon').click(function() {
+        $('.nav-item-text').css('display', 'none');
     })
 })
 

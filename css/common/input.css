@@ -46,6 +46,7 @@ select * {
     width: 190px;
     border-radius: 5px;
     border: 1px solid #bbbbbb;
+    border-right: none;
     font-family: GoogleSans-Regular;
     margin-left: 10px;
     margin-right: 5px;
@@ -73,12 +74,42 @@ select * {
 }
 
 .dropdown-header-icon {
-    background-image: url('../../Resource/icon/new-dropdown.svg');
+    background-image: url('../../Resource/icon/chevron-down.svg');
     background-repeat: no-repeat;
     background-size: contain;
-    margin-left: 12px;
-    width: 12px;
-    height: 12px;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    align-items: center;
+}
+
+.dropdown-icon {
+    background-image: url('../../Resource/icon/chevron-down.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    align-items: center;
+}
+
+.dropup-icon {
+    background-image: url('../../Resource/icon/chevron-up.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    align-items: center;
+}
+
+.dropup-header-icon {
+    background-image: url('../../Resource/icon/chevron-up.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
     align-items: center;
 }
 

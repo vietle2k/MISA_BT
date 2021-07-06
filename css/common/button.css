@@ -1,4 +1,4 @@
-.btn{
+.btn {
     width: 100px;
     height: 40px;
     background-color: #019160;
@@ -7,169 +7,221 @@
     color: #ffffff;
     text-align: center;
     cursor: pointer;
-
 }
-    .btn:hover{
-        background-color: #2FBE8E;
-    }
-    .btn:focus{
-        background-color: #01B075;
-    }  
-    .btn-add-employee{
-        display: flex;
-        outline: none ;
-        border: none ;
-        width: 140px;
-        align-items: center;
-        border-radius: 5px;
-        color: #ffffff;
-        font-family: GoogleSans-Regular;
-        text-align: center;
-        cursor: pointer;
-    }
-    .btn-refresh{
-        width: 40px;
-        height: 40px;
-        background-image: url('../../Resource/icon/refresh.png');
-        background-repeat: no-repeat;;
-        background-position: center;
-        outline: none ;
-        border: 1px solid silver;
-        
-        background-color: #ffffff;
-    }
-    .btn-refresh:hover{
-        background-color: #ffffff;
-    }
-    .btn-refresh:focus{
-        background-color: #ffffff;
-    }    
-    .btn-close, .btn-warning-close{
-        background-image: url('../../Resource/icon/x.svg');
-        background-repeat: no-repeat;;
-        background-size: contain;
-        width: 20px;
-        height: 20px;
-        outline: none;
-        border: none;
-        background-color: #ffffff;
-       cursor: pointer;
-        margin: 6px;
-    } 
-        .btn-close, .btn-warning-close:hover{
-            background-color: #dedede;
-        }   
-    .btn-avatar{
-        background-image: url('../../Resource/img/default-avatar.jpg');
-        background-repeat: no-repeat;;
-        background-size: contain;
-        width: 180px;
-        height:180px;
-        border-radius: 50%;
-        border: 2px solid #dedede;
-    }
-    .btn-save{
-        
-        width: 100px;
-        height:40px;
-        border-radius: 5px;
-        margin: 10px 20px 10px 16px;
-        display: flex;
-        align-items: center;
-        padding-left: 20px;
-        font-size: 16px;
-        background-color: #019160;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        color:  #ffffff;
-    }
-        .btn-save:hover{
-            background-color: #2FBE8E;
-        }
-        .btn-save:focus{
-            background-color: #01B075;
-        }  
-    .save-icon{
-        background-image: url('../../Resource/icon/save.svg');
-        background-repeat: no-repeat;;
-        background-size: contain;
-        width: 16px;
-        height: 16px;
-        margin-right: 5px;
 
-    }
-    .btn-destroy{
-        width: 100px;
-        height:40px;
-        border-radius: 5px;
-        margin: 10px 0px 10px 16px;
-        display: flex;
-        align-items: center;
-        text-align: left;;
-        padding-left: 40px;
-        font-size: 16px;
-        background-color: #dedede;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        color:  black;
-    }
-    .btn-destroy:hover{
-        color: red;
-    }
-    .btn-warning-save{
-        
-        width: 100px;
-        height:40px;
-        border-radius: 5px;
-        margin: 5px 20px 5px 16px;
-        padding-left: 20px;
-        font-size: 16px;
-        text-align: center;
-        background-color: red;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        color:  #ffffff;
-        padding-left: 6px
-    }
-    .btn-warning-destroy{
-        width: 100px;
-        height:40px;
-        border-radius: 5px;
-        margin: 5px 0px 5px 16px;
-        align-items: center;
-        text-align: left;;
-        padding-left: 40px;
-        font-size: 16px;
-        background-color: #dedede;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        color:  black;
-    }
-    .btn-warning-destroy:hover{
-        color: red;
-        background-color: silver;
-    }
-    .btn-dropdown{
-        
-        outline: none;
-        height: 40px;
-        width: 40px;
-        padding: 0px;
-        background-color: #ffffff;
-        margin: 0px;
-        border-left: 1px solid #bbbbbb;
-        border-right: none;
-        border-top: none;
-        border-bottom: none;
-        border-radius: 0px;
-    }
-    .btn-dropdown:hover{
-        background-color: #e5e5e5;
-    }
-    .btn-dropdown:focus{
-        background-color: #e5e5e5 ;
-    }
+.btn:hover {
+    background-color: #2FBE8E;
+}
+
+.btn:focus {
+    background-color: #01B075;
+}
+
+.btn-add-employee {
+    display: flex;
+    outline: none;
+    border: none;
+    width: 140px;
+    align-items: center;
+    border-radius: 5px;
+    color: #ffffff;
+    font-family: GoogleSans-Regular;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-refresh {
+    width: 40px;
+    height: 40px;
+    background-image: url('../../Resource/icon/refresh.png');
+    background-repeat: no-repeat;
+    ;
+    background-position: center;
+    outline: none;
+    border: 1px solid silver;
+    background-color: #ffffff;
+}
+
+.btn-refresh:hover {
+    background-color: #ffffff;
+}
+
+.btn-refresh:focus {
+    background-color: #ffffff;
+}
+
+.btn-close,
+.btn-warning-close {
+    background-image: url('../../Resource/icon/x.svg');
+    background-repeat: no-repeat;
+    ;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    outline: none;
+    border: none;
+    background-color: #ffffff;
+    cursor: pointer;
+    margin: 6px;
+}
+
+.btn-close,
+.btn-warning-close:hover {
+    background-color: #dedede;
+}
+
+.btn-avatar {
+    background-image: url('../../Resource/img/default-avatar.jpg');
+    background-repeat: no-repeat;
+    ;
+    background-size: contain;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 2px solid #dedede;
+}
+
+.btn-save {
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 10px 20px 10px 16px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 16px;
+    background-color: #019160;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.btn-save:hover {
+    background-color: #2FBE8E;
+}
+
+.btn-save:focus {
+    background-color: #01B075;
+}
+
+.save-icon {
+    background-image: url('../../Resource/icon/save.svg');
+    background-repeat: no-repeat;
+    ;
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+.btn-destroy {
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 10px 0px 10px 16px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    ;
+    padding-left: 40px;
+    font-size: 16px;
+    background-color: #dedede;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: black;
+}
+
+.btn-destroy:hover {
+    color: red;
+}
+
+.btn-warning-save {
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 5px 20px 5px 16px;
+    padding-left: 20px;
+    font-size: 16px;
+    text-align: center;
+    background-color: red;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #ffffff;
+    padding-left: 6px
+}
+
+.btn-warning-destroy {
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 5px 0px 5px 16px;
+    align-items: center;
+    text-align: left;
+    ;
+    padding-left: 40px;
+    font-size: 16px;
+    background-color: #dedede;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: black;
+}
+
+.btn-warning-destroy:hover {
+    color: red;
+    background-color: silver;
+}
+
+.btn-dropdown,
+.btn-dropdown2 {
+    outline: none;
+    height: 40px;
+    width: 40px;
+    padding: 0px;
+    background-color: #ffffff;
+    margin: 0px;
+    border-left: 1px solid #bbbbbb;
+    border-right: 1px solid #bbbbbb;
+    border-top: none;
+    border-bottom: none;
+    border-radius: 0px;
+}
+
+.btn-dropup {
+    outline: none;
+    height: 40px;
+    width: 40px;
+    padding: 0px;
+    background-color: #e5e5e5;
+    margin: 0px;
+    border-left: 1px solid #bbbbbb;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    border-radius: 0px;
+}
+
+.btn-dropdown:hover {
+    background-color: #e5e5e5;
+}
+
+.btn-dropdown:focus {
+    background-color: #e5e5e5;
+}
+
+.btn-dropdown2:hover {
+    background-color: #e5e5e5;
+}
+
+.btn-dropdown2:focus {
+    background-color: #e5e5e5;
+}
+
+.shortcut-icon {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
