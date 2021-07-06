@@ -42,23 +42,41 @@ $(document).ready(function() {
         $('.content-one').removeClass('clickdropdown');
         $(this).addClass('clickdropdown');
     })
+    $('.content-one').click(function() {
+
+        $('.content-one').removeClass('clickdropdown');
+        $(this).addClass('clickdropdown');
+        $('.content-one').find('.dropdown-content-icon').css('display', 'none');
+        $('.clickdropdown').find('.dropdown-content-icon').css('display', 'block');
+    })
+    $('.content-two').click(function() {
+
+        $('.content-two').removeClass('clickdropdown');
+        $(this).addClass('clickdropdown');
+        $('.content-two').find('.dropdown-content-icon').css('display', 'none');
+        $('.clickdropdown').find('.dropdown-content-icon').css('display', 'block');
+    })
     $('.btn-dropdown').click(function() {
         $('.dropdown-content').removeClass('hidden');
 
         $(this).parent().parent().find('.dropdown-content').toggle();
     })
     $('.content-one').click(function() {
-            var a = this;
-            // $(this).parent().removeClass('hidden');
-            // $(this).parent().removeClass('hide');
-            // $(this).parent().addClass('hidden');
+        $(this).parent().toggle();
+        $('.dropdown-header-text').text($(this).first().text());
+
+
+    })
+    $('.content-two').click(function() {
             $(this).parent().toggle();
-            console.log($(this).first());
+            $('.dropdown-text').text($(this).first().text());
+
+
         })
-        // $('.content-one').hover(function(){
-        //     document.getElementById('cmm').setAttribute("background-image", "url('../../Resource/icon/check.svg');");
-        //     console.log("a");
+        // $('.content-two').click(function() {
+        //     //  
         //     // console.log(document.getElementsByClassName('dropdown-content-icon')[0]);
+        //     $(this).find('.dropdown-content-icon').toggle();
         // })
     $('.salary_employee').on("keyup", function(event) {
 
