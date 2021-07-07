@@ -224,8 +224,7 @@ input,
     padding-left: 12px;
 }
 
-.dialog-dropdown-header-icon,
-.dialog-dropdown-icon-gender {
+.dialog-dropdown-header-icon {
     background-image: url('../../Resource/icon/chevron-down.svg');
     background-repeat: no-repeat;
     background-size: contain;
@@ -234,11 +233,25 @@ input,
     align-items: center;
 }
 
-.dialog-dropdown-icon {
+.dialog-dropdown-icon-vt,
+.dialog-dropdown-icon-pb,
+.dialog-dropdown-icon-ttcv {
     background-image: url('../../Resource/icon/chevron-down.svg');
     background-repeat: no-repeat;
     background-size: contain;
-    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    align-items: center;
+}
+
+.dialog-dropup-icon,
+.dialog-dropup-icon-vt,
+.dialog-dropup-icon-pb,
+.dialog-dropup-icon-ttcv {
+    background-image: url('../../Resource/icon/chevron-down.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* margin-left: 10px; */
     width: 20px;
     height: 20px;
     align-items: center;
@@ -254,8 +267,7 @@ input,
     align-items: center;
 }
 
-.dialog-dropup-header-icon,
-.dialog-dropup-icon-gender {
+.dialog-dropup-header-icon {
     background-image: url('../../Resource/icon/chevron-up.svg');
     background-repeat: no-repeat;
     background-size: contain;

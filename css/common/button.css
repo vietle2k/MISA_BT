@@ -176,9 +176,6 @@
 }
 
 .btn-dropdown,
-.btn-dropdown3,
-.btn-dropdown4,
-.btn-dropdown5,
 .btn-dropdown2 {
     outline: none;
     height: 40px;
@@ -196,7 +193,10 @@
     cursor: pointer;
 }
 
-.dialog-btn-dropdown {
+.dialog-btn-dropdown,
+.btn-dropdown3,
+.btn-dropdown4,
+.btn-dropdown5 {
     outline: none;
     height: 30px;
     width: 30px;
