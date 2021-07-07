@@ -177,7 +177,8 @@ select * {
 
 .border-bt {
     border-bottom: 1px solid #bbbbbb;
-    border-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .clickdropdown {

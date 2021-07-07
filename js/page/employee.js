@@ -242,3 +242,9 @@ function buildDataEmployees(data) {
     });
 
 }
+
+class Customer {
+    constructor() {
+
+    }
+}

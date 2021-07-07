@@ -176,6 +176,9 @@
 }
 
 .btn-dropdown,
+.btn-dropdown3,
+.btn-dropdown4,
+.btn-dropdown5,
 .btn-dropdown2 {
     outline: none;
     height: 40px;
@@ -187,10 +190,34 @@
     border-right: 1px solid #bbbbbb;
     border-top: none;
     border-bottom: none;
-    border-radius: 0px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    font-size: 13px;
+    cursor: pointer;
 }
 
-.btn-dropup {
+.dialog-btn-dropdown {
+    outline: none;
+    height: 30px;
+    width: 30px;
+    padding: 0px;
+    background-color: #ffffff;
+    margin: 0px;
+    border-left: 1px solid #bbbbbb;
+    border-right: 1px solid #bbbbbb;
+    border-top: none;
+    border-bottom: none;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.btn-dropup,
+.dialog-btn-dropup {
     outline: none;
     height: 40px;
     width: 40px;
@@ -198,10 +225,9 @@
     background-color: #e5e5e5;
     margin: 0px;
     border-left: 1px solid #bbbbbb;
-    border-right: none;
-    border-top: none;
-    border-bottom: none;
-    border-radius: 0px;
+    border-left: 1px solid #bbbbbb;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .btn-dropdown:hover {
@@ -209,6 +235,38 @@
 }
 
 .btn-dropdown:focus {
+    background-color: #e5e5e5;
+}
+
+.btn-dropdown3:hover {
+    background-color: #e5e5e5;
+}
+
+.btn-dropdown3:focus {
+    background-color: #e5e5e5;
+}
+
+.btn-dropdown4:hover {
+    background-color: #e5e5e5;
+}
+
+.btn-dropdown4:focus {
+    background-color: #e5e5e5;
+}
+
+.btn-dropdown5:hover {
+    background-color: #e5e5e5;
+}
+
+.btn-dropdown5:focus {
+    background-color: #e5e5e5;
+}
+
+.dialog-btn-dropdown:hover {
+    background-color: #e5e5e5;
+}
+
+.dialog-btn-dropdown:focus {
     background-color: #e5e5e5;
 }
 
@@ -232,6 +290,8 @@
     width: 32px;
     height: 32px;
     right: 0px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
 }
 
 .shortcut-icon2 {
