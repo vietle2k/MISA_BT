@@ -1,7 +1,7 @@
 .navbar {
     width: 226px;
     height: 100%;
-    border: 1px solid #e5e5e5;
+    /* border: 1px solid #e5e5e5; */
 }
 
 .navbar .logo-icon {
@@ -30,6 +30,10 @@
 
 .navbar .navbar-content {
     width: 100%;
+    height: calc(100% - 60px);
+    border-right: 1px solid #e5e5e5;
+    transition: all 0.5 ease;
+    position: relative;
 }
 
 .navbar .navbar-content .nav-item {
@@ -38,6 +42,8 @@
     padding-left: 20px;
     cursor: pointer;
     line-height: 44px;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .navbar .navbar-content .nav-item:hover {

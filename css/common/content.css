@@ -2,6 +2,13 @@
     width: calc(100% - 226px);
 }
 
+.content .content-page {
+    width: calc(100% - 226px);
+    /* border: 1px solid black; */
+    position: absolute;
+    left: 226px;
+}
+
 .content .content-page .content-page-header,
 .sf_employee {
     display: flex;

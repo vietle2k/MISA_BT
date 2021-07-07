@@ -106,7 +106,7 @@
 }
 
 .save-icon {
-    background-image: url('../../Resource/icon/save.svg');
+    background-image: url('../../Resource/icon/floppy-disk-new.svg');
     background-repeat: no-repeat;
     ;
     background-size: contain;
@@ -221,7 +221,29 @@
 }
 
 .shortcut-icon {
-    width: 40px;
-    height: 40px;
+    border: none;
+    outline: none;
     cursor: pointer;
+    position: absolute;
+    background-image: url('../../Resource/icon/chevron-left.svg');
+    background-repeat: no-repeat;
+    background-color: #e5e5e5;
+    background-size: contain;
+    width: 32px;
+    height: 32px;
+    right: 0px;
+}
+
+.shortcut-icon2 {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    background-image: url('../../Resource/icon/chevron-right.svg');
+    background-repeat: no-repeat;
+    background-color: #e5e5e5;
+    background-size: contain;
+    width: 32px;
+    height: 32px;
+    right: 0px;
 }

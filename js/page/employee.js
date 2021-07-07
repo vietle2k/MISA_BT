@@ -37,9 +37,10 @@ $(document).ready(function() {
             // $('.dialog-detail').removeClass('dialog-hidden');
         })
         // config navbar-item
-    $('.nav-item').click(function(e) {
+    $('.nav-item').click(function() {
             $('.nav-item').removeClass('editNavbar');
-            e.target.parentElement.classList.add('editNavbar');
+            $(this).addClass('editNavbar');
+            //e.target.parentElement.classList.add('editNavbar');
         })
         // css dropdown customer select vị trí và phòng ban
         // $('.content-one').click(function() {
@@ -93,32 +94,55 @@ $(document).ready(function() {
     $('.salary_employee').on("keyup", function(event) {
 
 
-        // When user select text in the document, also abort.
-        var selection = window.getSelection().toString();
-        if (selection !== '') {
-            return;
-        }
+            // When user select text in the document, also abort.
+            var selection = window.getSelection().toString();
+            if (selection !== '') {
+                return;
+            }
 
-        // When the arrow keys are pressed, abort.
-        if ($.inArray(event.keyCode, [38, 40, 37, 39]) !== -1) {
-            return;
-        }
+            // When the arrow keys are pressed, abort.
+            if ($.inArray(event.keyCode, [38, 40, 37, 39]) !== -1) {
+                return;
+            }
 
 
-        var $this = $(this);
+            var $this = $(this);
 
-        // Get the value.
-        var input = $this.val();
+            // Get the value.
+            var input = $this.val();
 
-        var input = input.replace(/[\D\s\._\-]+/g, "");
-        input = input ? parseInt(input, 10) : 0;
+            var input = input.replace(/[\D\s\._\-]+/g, "");
+            input = input ? parseInt(input, 10) : 0;
 
-        $this.val(function() {
-            return (input === 0) ? "" : input.toLocaleString("it-IT");
-        });
-    })
+            $this.val(function() {
+                return (input === 0) ? "" : input.toLocaleString("it-IT");
+            });
+        })
+        /**
+         * edit narbar shortcut
+         * by mf920-lxviet
+         */
+    var checkShortcut = 0;
     $('.shortcut-icon').click(function() {
-        $('.nav-item-text').css('display', 'none');
+        ++checkShortcut;
+        $('.shortcut-icon').toggleClass('shortcut-icon2');
+        $('.nav-item-text').toggle();
+        if (checkShortcut % 2 != 0) {
+            // $('.nav-item-text').css('display', 'none');
+            //$('.nav-item').width(36);
+            $('.content-page').css('left', 50);
+            $('.content-page').css('width', 'calc(100% - 50px)');
+            $('.navbar-content').css('width', '57');
+        } else {
+            // $('.nav-item-text').css('display', 'none');
+            //$('.nav-item').width(226);
+            $('.content-page').css('left', 226);
+            $('.content-page').css('width', 'calc(100% - 226px)');
+            $('.navbar-content').css('width', '226');
+        }
+
+        // $('.navbar-content').css('border-right', 'none');
+        // $('.nav-item').css('border-right', '1px solid #e5e5e5');
     })
 })
 
