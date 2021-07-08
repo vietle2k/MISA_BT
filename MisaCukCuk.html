@@ -180,16 +180,6 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>NV00001</td>
-                            <td>Lê Xuân Việt </td>
-                            <td>Nam</td>
-                            <td>01/06/2000</td>
-                            <td>0123456789</td>
-                            <td style="max-width: 100px">vietbadao2k@gmail.com vietbadao2k@gmail.com vietbadao2k@gmail.com</td>
-                            <td>Fresher Web</td>
-                            <td>Phòng thực tập sinh</td>
-                            <td>10000000</td>
-                            <td>Đang thực tập</td>
                         </tr>
                     </tbody>
                 </table>
@@ -234,20 +224,20 @@
                                 <div style="color:red">*</div>)
                                 <div style="color:red; margin-left: 20px;" id="input1" class="InvalidEmail">Yêu cầu nhập</div>
                             </div>
-                            <input type="text" class="blank_box employeecode" ref="EmployeeCode">
+                            <input type="text" class="blank_box employeecode" ref="EmployeeCode" fieldname="Employeecode">
                         </div>
                         <div>
                             <div style="display:flex;">Họ và tên (
                                 <div style="color:red">*</div>)
                                 <div style="color:red; margin-left: 20px;" id="input2" class="InvalidEmail">Yêu cầu nhập</div>
                             </div>
-                            <input type="text" class="blank_box fullname">
+                            <input type="text" class="blank_box fullname" fieldname="FullName">
                         </div>
                     </div>
                     <div style="display:flex;">
                         <div>
                             <div style="display:flex;">Ngày sinh</div>
-                            <input type="date" class="date_box">
+                            <input type="date" class="date_box" fieldname="DateOfBirth"> 
                         </div>
                         <div>
                             <div style="display:flex; margin-left: 10px;">Giới tính</div>
@@ -258,7 +248,7 @@
                             </select> -->
                             <div class="dialog-dropdown" style="position: relative;">
                                 <div class="dialog-dropdown-header">
-                                    <div class="dialog-dropdown-header-text gendername"><input type="text" class="dialog-text"></div>
+                                    <div class="dialog-dropdown-header-text gendername"><input type="text" class="dialog-text" fieldname="GenderName"></div>
                                     <button class=" dialog-btn-dropdown ">
                                         <div class="dialog-dropdown-header-icon"></div>
                                     </button>
@@ -313,14 +303,14 @@
                                 <div style="color:red">*</div>)
                                 <div style="color:red; margin-left: 20px;" id="input4" class="InvalidEmail">Email chưa hợp lệ</div>
                             </div>
-                            <input type="text" class="blank_box email">
+                            <input type="text" class="blank_box email" fieldname="Email">
                         </div>
                         <div>
                             <div style="display:flex;">Số điện thoại (
                                 <div style="color:red">*</div>)
                                 <div style="color:red; margin-left: 20px;" id="input5" class="InvalidEmail">Yêu cầu nhập</div>
                             </div>
-                            <input type="text" class="blank_box phonenumber">
+                            <input type="text" class="blank_box phonenumber" fieldname="PhoneNumber">
                         </div>
                     </div>
                     <div style="font-size: 15px">B. THÔNG TIN CÔNG VIỆC</div>

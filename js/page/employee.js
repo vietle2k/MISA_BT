@@ -1,12 +1,23 @@
 $(document).ready(function() {
-    var data = getData();
+    getData();
     // console.table(data);
-    buildDataEmployees(data);
+    // buildDataEmployees(data);
     loadData();
     // Hiển thị form nhập liệu thêm nhân viên
     $('.btn-add-employee').click(function() {
         $('.m-dialog').removeClass('dialog-hidden');
         $('.employeecode').focus();
+         $.ajax({
+                method: "GET",
+                url: "http://cukcuk.manhnv.net/v1/Employees/NewEmployeeCode",
+                data: "null",
+                async: false,
+                contentType: "application/json"
+            }).done(function(response) {
+                $('.employeecode').val(response);
+            }).fail(function(respone) {
+                alert("bi loi roi");
+            });
     });
     //Đóng form nhập liệu thêm nhân viên
     $('.btn-close').click(function() {
@@ -22,11 +33,16 @@ $(document).ready(function() {
         var a = $('.workstatus input').val();
         // a.split('.');
         console.log(a);
+        var checkGenderId;
+        if($('.gendername input').val()=="Nam") checkGenderId = 1;
+        else if($('.gendername input').val()=="Nữ") checkGenderId = 0;
+        else checkGenderId = 2;
         var employee = {
      
             "EmployeeCode":$('.employeecode').val(),
             "FullName": $('.fullname').val(),
             "GenderName":$('.gendername input').val(),
+            "Gender": checkGenderId,
             "DateOfBirth":$('.date_box').val(),
             // "IdentityNumber": 
             // "IdentityDate":
@@ -42,17 +58,21 @@ $(document).ready(function() {
             // "WorkStatus": $('.workstatus input').val().toString()
             
         }
-        console.log(employee);
-        $.ajax({
-            url: "http://cukcuk.manhnv.net/v1/Employees",
-            method: 'POST',
-            data: JSON.stringify(employee),
-            contentType: 'application/json'
-        }).done(function(res){
-            alert("Them duoc roi");
-        }).fail(function(res){
-
-        })
+        setTimeout(function() {
+            console.log(JSON.stringify(employee))
+            $.ajax({
+                url: "http://cukcuk.manhnv.net/v1/Employees",
+                method: "POST",
+                data: JSON.stringify(employee),
+                contentType: 'application/json'
+            }).done(function(res){
+                alert("Them duoc roi");
+                console.log(employee);
+                getData(); 
+            }).fail(function(res){
+    
+            })
+        },1000)
         
     });
     // Đóng form cảnh báo xóa nhân viên
@@ -61,18 +81,49 @@ $(document).ready(function() {
     });
     $('.btn-warning-destroy').click(function() {
         $('.dialog-warning').addClass('warning-hidden');
+
     });
     // xác nhận xóa nhân viên
     $('.btn-warning-save').click(function() {
         $('.dialog-warning').addClass('warning-hidden');
+        $.ajax({
+                method: "DELETE",
+                url: "http://cukcuk.manhnv.net/v1/Employees/" + employeeCodeDelete,
+                data: "null",
+                async: false,
+                contentType: "application/json"
+            }).done(function(response) {
+                
+                console.log("Thanh cong");
+                getData(); 
+            }).fail(function(respone) {
+                alert("bi loi roi");
+            });
         
 
     });
-
-    $('.tblEmployee tbody tr ').on('click', function() {
-
+    var employeeCodeSelected;
+    var employeeCodeDelete;
+    $('.tblEmployee tbody').on('click','tr', function() {
+           
             $('.m-warning').removeClass('warning-hidden');
             // $('.dialog-detail').removeClass('dialog-hidden');
+            $(this).find('td').attr("fieldname");
+             employeeCodeSelected = ($(this).find('td').first().text());
+            $.ajax({
+                method: "GET",
+                url: "http://cukcuk.manhnv.net/v1/Employees/Filter?pageSize=1&employeeCode=" + employeeCodeSelected,
+                data: "null",
+                async: false,
+                contentType: "application/json"
+            }).done(function(response) {
+                employeeCodeDelete = response.Data[0].EmployeeId;
+                console.log(employeeCodeDelete);
+            }).fail(function(respone) {
+                alert("bi loi roi");
+            });
+            
+            
         })
         // config navbar-item
     $('.nav-item').click(function() {
@@ -185,23 +236,6 @@ $(document).ready(function() {
 })
 
 function loadData() {
-
-    var trHTML = `<tr>
-                    <td>NV00001</td>
-                    <td>Lê Xuân Việt </td>
-                    <td>Nam</td>
-                    <td>` + formatDate('8/9/2000') + `</td>
-                    <td>0123456789</td>
-                    <td>vietbadao2k@gmail.com</td>
-                    <td>Fresher Web</td>
-                    <td>Phòng thực tập sinh</td>
-                    <td>` + formatMoney('100000000') + `</td>
-                    <td>Đang thực tập</td>
-            </tr>`;
-    for (var i = 0; i < 3; ++i) {
-        $('.tblEmployee tbody').append(trHTML);
-    }
-
     
 }
 
@@ -257,6 +291,7 @@ function getData() {
         contentType: "application/json"
     }).done(function(response) {
         employees = response;
+        buildDataEmployees(employees);
     }).fail(function(respone) {
         alert("bi loi roi");
     });
@@ -264,18 +299,19 @@ function getData() {
 }
 //build data
 function buildDataEmployees(data) {
+    $('.tblEmployee tbody').empty()
     $.each(data, function(index, employee) {
         var trHTML = $(`<tr>
-                                <td>${employee.EmployeeCode}</td>
-                                <td>${employee.FullName}</td>
-                                <td>${employee.GenderName}</td>
-                                <td>${formatDate(employee.DateOfBirth)}</td>
-                                <td>${employee.PhoneNumber}</td>
-                                <td>${employee.Email}</td>
-                                <td>${employee.PositionName}</td>
-                                <td>${employee.DepartmentName}</td>
-                                <td>${formatMoney(employee.Salary)}</td>
-                                <td>${employee.MartialStatusName}</td>
+                                <td fieldname = "EmployeeCode">${employee.EmployeeCode}</td>
+                                <td fieldname = "FullName">${employee.FullName}</td>
+                                <td fieldname = "GenderName">${employee.GenderName}</td>
+                                <td fieldname = "DateOfBirth">${formatDate(employee.DateOfBirth)}</td>
+                                <td fieldname = "PhoneNumber">${employee.PhoneNumber}</td>
+                                <td fieldname = "Email">${employee.Email}</td>
+                                <td fieldname = "PositionName">${employee.PositionName}</td>
+                                <td fieldname = "DepartmentName">${employee.DepartmentName}</td>
+                                <td fieldname = "Salary" style="text-align: right;">${formatMoney(employee.Salary)}</td>
+                                <td fieldname = "MartialStatusName">${employee.MartialStatusName}</td>
                         </tr>`);
         trHTML.data('recodeId', employee.EmployeeId);
         $('.tblEmployee tbody').append(trHTML);
