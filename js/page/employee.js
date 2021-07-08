@@ -18,6 +18,42 @@ $(document).ready(function() {
     // xác nhận thêm nhân viên
     $('.btn-save').click(function() {
         $('.m-dialog').addClass('dialog-hidden');
+        //build data
+        var a = $('.workstatus input').val();
+        // a.split('.');
+        console.log(a);
+        var employee = {
+     
+            "EmployeeCode":$('.employeecode').val(),
+            "FullName": $('.fullname').val(),
+            "GenderName":$('.gendername input').val(),
+            "DateOfBirth":$('.date_box').val(),
+            // "IdentityNumber": 
+            // "IdentityDate":
+            // "IdentityPlace":
+            "Email": $('.email').val(),
+            "PhoneNumber": $('.phonenumber').val(),
+            "PositionName": $('.positionname input').val(),
+            "DepartmentName": $('.departmentname input').val(),
+            // "PersonalTaxCode":
+            "Salary": $('.salary_employee').val().toString().replaceAll('.','')
+            // "JoinDate":
+
+            // "WorkStatus": $('.workstatus input').val().toString()
+            
+        }
+        console.log(employee);
+        $.ajax({
+            url: "http://cukcuk.manhnv.net/v1/Employees",
+            method: 'POST',
+            data: JSON.stringify(employee),
+            contentType: 'application/json'
+        }).done(function(res){
+            alert("Them duoc roi");
+        }).fail(function(res){
+
+        })
+        
     });
     // Đóng form cảnh báo xóa nhân viên
     $('.btn-warning-close').click(function() {
@@ -29,6 +65,8 @@ $(document).ready(function() {
     // xác nhận xóa nhân viên
     $('.btn-warning-save').click(function() {
         $('.dialog-warning').addClass('warning-hidden');
+        
+
     });
 
     $('.tblEmployee tbody tr ').on('click', function() {
@@ -163,6 +201,8 @@ function loadData() {
     for (var i = 0; i < 3; ++i) {
         $('.tblEmployee tbody').append(trHTML);
     }
+
+    
 }
 
 // Định dạng ngày tháng năm
@@ -183,7 +223,7 @@ function formatMoney(money) {
     if (money != null && money != 0) {
         return money.toString().split('').reverse().reduce((prev, next, index) => {
             return ((index % 3) ? next : (next + '.')) + prev
-        }) + ' VNĐ'
+        })
     }
 
 }

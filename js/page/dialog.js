@@ -7,7 +7,8 @@ $(document).ready(function() {
         $('.clickdropdown').find('.dialog-dropdown-content-icon').css('display', 'block');
         $('.dialog-dropdown-header-icon').toggleClass('dialog-dropup-header-icon');
         $(this).parent().toggle();
-        $('.dialog-dropdown-header-text').text($(this).first().text());
+        console.log($(this).find('.dialog-dropdown-content-text').text());
+        $('.dialog-dropdown-header-text input').val($(this).find('.dialog-dropdown-content-text').text());
     });
     $('.dialog-btn-dropdown').click(function() {
         $('.dialog-dropdown-content').removeClass('hidden');
@@ -24,7 +25,7 @@ $(document).ready(function() {
         $('.clickdropdown').find('.dialog-dropdown-content-icon').css('display', 'block');
         $('.dialog-dropdown-icon-vt').toggleClass('dialog-dropup-icon-vt');
         $(this).parent().toggle();
-        $('.dialog-dropdown-text-vt').text($(this).first().text());
+        $('.dialog-dropdown-text-vt input').val($(this).find('.dialog-dropdown-content-text').text());
     });
     $('.btn-dropdown3').click(function() {
         $('.dialog-dropdown-content').removeClass('hidden');
@@ -41,7 +42,7 @@ $(document).ready(function() {
         $('.clickdropdown').find('.dialog-dropdown-content-icon').css('display', 'block');
         $('.dialog-dropdown-icon-pb').toggleClass('dialog-dropup-icon-pb');
         $(this).parent().toggle();
-        $('.dialog-dropdown-text-pb').text($(this).first().text());
+        $('.dialog-dropdown-text-pb input').val($(this).find('.dialog-dropdown-content-text').text());
     });
     $('.btn-dropdown4').click(function() {
         $('.dialog-dropdown-content').removeClass('hidden');
@@ -58,7 +59,7 @@ $(document).ready(function() {
         $('.clickdropdown').find('.dialog-dropdown-content-icon').css('display', 'block');
         $('.dialog-dropdown-icon-ttcv').toggleClass('dialog-dropup-icon-ttcv');
         $(this).parent().toggle();
-        $('.dialog-dropdown-text-ttcv').text($(this).first().text());
+        $('.dialog-dropdown-text-ttcv input').val($(this).find('.dialog-dropdown-content-text').text());
     });
     $('.btn-dropdown5').click(function() {
         $('.dialog-dropdown-content').removeClass('hidden');

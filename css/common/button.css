@@ -54,20 +54,19 @@
 .btn-warning-close {
     background-image: url('../../Resource/icon/x.svg');
     background-repeat: no-repeat;
-    ;
     background-size: contain;
     width: 20px;
     height: 20px;
     outline: none;
     border: none;
-    background-color: #ffffff;
+    background-color: #ffffff !important;
     cursor: pointer;
     margin: 6px;
 }
 
 .btn-close,
 .btn-warning-close:hover {
-    background-color: #dedede;
+    background-color: #dedede ;
 }
 
 .btn-avatar {
@@ -203,8 +202,8 @@
     padding: 0px;
     background-color: #ffffff;
     margin: 0px;
-    border-left: 1px solid #bbbbbb;
-    border-right: 1px solid #bbbbbb;
+    border-left: 1px solid #dedede;
+    border-right: 1px solid #dedede;
     border-top: none;
     border-bottom: none;
     border-top-right-radius: 3px;
