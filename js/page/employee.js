@@ -1,23 +1,30 @@
 $(document).ready(function() {
+    var mapDepartment = new Map();
+    var mapPosition = new Map();
     getData();
     // console.table(data);
     // buildDataEmployees(data);
+    mapDepartment = getInforDepartment();
+    mapPosition = getInforPosition();
+    console.log(mapDepartment);
+    console.log(mapPosition);
     loadData();
+
     // Hiển thị form nhập liệu thêm nhân viên
     $('.btn-add-employee').click(function() {
         $('.m-dialog').removeClass('dialog-hidden');
         $('.employeecode').focus();
-         $.ajax({
-                method: "GET",
-                url: "http://cukcuk.manhnv.net/v1/Employees/NewEmployeeCode",
-                data: "null",
-                async: false,
-                contentType: "application/json"
-            }).done(function(response) {
-                $('.employeecode').val(response);
-            }).fail(function(respone) {
-                alert("bi loi roi");
-            });
+        $.ajax({
+            method: "GET",
+            url: "http://cukcuk.manhnv.net/v1/Employees/NewEmployeeCode",
+            data: "null",
+            async: false,
+            contentType: "application/json"
+        }).done(function(response) {
+            $('.employeecode').val(response);
+        }).fail(function(respone) {
+            alert("bi loi roi");
+        });
     });
     //Đóng form nhập liệu thêm nhân viên
     $('.btn-close').click(function() {
@@ -34,29 +41,41 @@ $(document).ready(function() {
         // a.split('.');
         console.log(a);
         var checkGenderId;
-        if($('.gendername input').val()=="Nam") checkGenderId = 1;
-        else if($('.gendername input').val()=="Nữ") checkGenderId = 0;
+        if ($('.gendername input').val() == "Nam") checkGenderId = 1;
+        else if ($('.gendername input').val() == "Nữ") checkGenderId = 0;
         else checkGenderId = 2;
+
+        var checkDepartmentId;
+        for (var key of mapDepartment.keys()) {
+            if (key == $('.departmentname input').val()) checkDepartmentId = mapDepartment.get(key);
+        }
+
+        var checkPositionId;
+        for (var key of mapPosition.keys()) {
+            if (key == $('.positionname input').val()) checkPositionId = mapPosition.get(key);
+        }
         var employee = {
-     
-            "EmployeeCode":$('.employeecode').val(),
+
+            "EmployeeCode": $('.employeecode').val(),
             "FullName": $('.fullname').val(),
-            "GenderName":$('.gendername input').val(),
+            // "GenderName": $('.gendername input').val(),
             "Gender": checkGenderId,
-            "DateOfBirth":$('.date_box').val(),
+            "DateOfBirth": $('.date_box').val(),
             // "IdentityNumber": 
             // "IdentityDate":
             // "IdentityPlace":
             "Email": $('.email').val(),
             "PhoneNumber": $('.phonenumber').val(),
-            "PositionName": $('.positionname input').val(),
-            "DepartmentName": $('.departmentname input').val(),
+            // "PositionName": $('.positionname input').val(),
+            "PositionId": checkPositionId,
+            "DepartmentId": checkDepartmentId,
+            // "DepartmentName": $('.departmentname input').val(),
             // "PersonalTaxCode":
-            "Salary": $('.salary_employee').val().toString().replaceAll('.','')
-            // "JoinDate":
+            "Salary": $('.salary_employee').val().toString().replaceAll('.', '')
+                // "JoinDate":
 
             // "WorkStatus": $('.workstatus input').val().toString()
-            
+
         }
         setTimeout(function() {
             console.log(JSON.stringify(employee))
@@ -65,16 +84,17 @@ $(document).ready(function() {
                 method: "POST",
                 data: JSON.stringify(employee),
                 contentType: 'application/json'
-            }).done(function(res){
-                alert("Them duoc roi");
+            }).done(function(res) {
+                // alert("Them duoc roi");
                 console.log(employee);
-                getData(); 
-            }).fail(function(res){
-    
+                getData();
+            }).fail(function(res) {
+
             })
-        },1000)
-        
+        }, 0)
+
     });
+
     // Đóng form cảnh báo xóa nhân viên
     $('.btn-warning-close').click(function() {
         $('.dialog-warning').addClass('warning-hidden');
@@ -87,29 +107,30 @@ $(document).ready(function() {
     $('.btn-warning-save').click(function() {
         $('.dialog-warning').addClass('warning-hidden');
         $.ajax({
-                method: "DELETE",
-                url: "http://cukcuk.manhnv.net/v1/Employees/" + employeeCodeDelete,
-                data: "null",
-                async: false,
-                contentType: "application/json"
-            }).done(function(response) {
-                
-                console.log("Thanh cong");
-                getData(); 
-            }).fail(function(respone) {
-                alert("bi loi roi");
-            });
-        
+            method: "DELETE",
+            url: "http://cukcuk.manhnv.net/v1/Employees/" + employeeCodeDelete,
+            data: "null",
+            async: false,
+            contentType: "application/json"
+        }).done(function(response) {
+
+            console.log("Thanh cong");
+            getData();
+        }).fail(function(respone) {
+            alert("bi loi roi");
+        });
+
 
     });
     var employeeCodeSelected;
     var employeeCodeDelete;
-    $('.tblEmployee tbody').on('click','tr', function() {
-           
+    $('.tblEmployee tbody').on('click', '.btn-deleteEmployee', function() {
+
             $('.m-warning').removeClass('warning-hidden');
             // $('.dialog-detail').removeClass('dialog-hidden');
             $(this).find('td').attr("fieldname");
-             employeeCodeSelected = ($(this).find('td').first().text());
+            employeeCodeSelected = ($(this).parent().parent().find('td').first().text());
+            // console.log(employeeCodeSelected);
             $.ajax({
                 method: "GET",
                 url: "http://cukcuk.manhnv.net/v1/Employees/Filter?pageSize=1&employeeCode=" + employeeCodeSelected,
@@ -119,11 +140,43 @@ $(document).ready(function() {
             }).done(function(response) {
                 employeeCodeDelete = response.Data[0].EmployeeId;
                 console.log(employeeCodeDelete);
+                // console.log(response);
             }).fail(function(respone) {
                 alert("bi loi roi");
             });
-            
-            
+
+
+        })
+        //sua thog tin nhan vien
+    $('.tblEmployee tbody').on('click', '.btn-editEmployee', function() {
+
+            // $('.m-warning').removeClass('warning-hidden');
+            $('.dialog-detail').removeClass('dialog-hidden');
+            // $(this).find('td').attr("fieldname");
+            employeeCodeSelected = ($(this).parent().parent().find('td').first().text());
+            $.ajax({
+                method: "GET",
+                url: "http://cukcuk.manhnv.net/v1/Employees/Filter?pageSize=1&employeeCode=" + employeeCodeSelected,
+                data: "null",
+                async: false,
+                contentType: "application/json"
+            }).done(function(response) {
+                // console.log(employeeCodeDelete);
+                $('.employeecode').val(response.Data[0].EmployeeCode);
+                $('.fullname').val(response.Data[0].FullName);
+                $('.gendername input').val(response.Data[0].GenderName);
+                $('.date_box').val(response.Data[0].DateOfBirth);
+                $('.email').val(response.Data[0].Email);
+                $('.phonenumber').val(response.Data[0].PhoneNumber);
+                $('.positionname input').val(response.Data[0].PositionName);
+                $('.departmentname input').val(response.Data[0].DepartmentName);
+                $('.salary_employee').val(formatMoney(response.Data[0].Salary));
+
+            }).fail(function(respone) {
+                alert("bi loi roi");
+            });
+
+
         })
         // config navbar-item
     $('.nav-item').click(function() {
@@ -236,7 +289,7 @@ $(document).ready(function() {
 })
 
 function loadData() {
-    
+
 }
 
 // Định dạng ngày tháng năm
@@ -299,8 +352,19 @@ function getData() {
 }
 //build data
 function buildDataEmployees(data) {
-    $('.tblEmployee tbody').empty()
+    $('.tblEmployee tbody').empty();
+    var temp = 0;
     $.each(data, function(index, employee) {
+        // console.log(index);
+        // if (index % 2 == 0) {
+        //     console.log('xam');
+        //     $('.btn-editEmployee').css('background-color', '#E9EBEE');
+        //     $('.btn-deleteEmployee').css('background-color', '#E9EBEE');
+        // } else {
+        //     console.log('trang')
+        //     $('.btn-editEmployee').css('background-color', '#ffffff');
+        //     $('.btn-deleteEmployee').css('background-color', '#ffffff');
+        // }
         var trHTML = $(`<tr>
                                 <td fieldname = "EmployeeCode">${employee.EmployeeCode}</td>
                                 <td fieldname = "FullName">${employee.FullName}</td>
@@ -312,13 +376,55 @@ function buildDataEmployees(data) {
                                 <td fieldname = "DepartmentName">${employee.DepartmentName}</td>
                                 <td fieldname = "Salary" style="text-align: right;">${formatMoney(employee.Salary)}</td>
                                 <td fieldname = "MartialStatusName">${employee.MartialStatusName}</td>
+                                <td class="ed"><button class="btn-editEmployee"></button><button class="btn-deleteEmployee"></button></td>
                         </tr>`);
-        trHTML.data('recodeId', employee.EmployeeId);
+        // trHTML.data('recodeId', employee.EmployeeId);
         $('.tblEmployee tbody').append(trHTML);
+
     });
+
 
 }
 
+function getInforDepartment() {
+    var mapTempDepartment = new Map();
+    $.ajax({
+        method: "GET",
+        url: "http://cukcuk.manhnv.net/api/Department",
+        data: "null",
+        async: false,
+        contentType: "application/json"
+    }).done(function(response) {
+        // console.log(response);
+        for (var i = 0; i < response.length; i++) {
+            mapTempDepartment.set(response[i].DepartmentName, response[i].DepartmentId);
+        }
+        // console.log(mapDepartment);
+    }).fail(function(respone) {
+        alert("bi loi roi");
+    });
+    return mapTempDepartment;
+}
+
+function getInforPosition() {
+    var mapTempPosition = new Map();
+    $.ajax({
+        method: "GET",
+        url: "http://cukcuk.manhnv.net/v1/Positions",
+        data: "null",
+        async: false,
+        contentType: "application/json"
+    }).done(function(response) {
+        // console.log(response);
+        for (var i = 0; i < response.length; i++) {
+            mapTempPosition.set(response[i].PositionName, response[i].PositionId);
+        }
+        // console.log(mapDepartment);
+    }).fail(function(respone) {
+        alert("bi loi roi");
+    });
+    return mapTempPosition;
+}
 class Customer {
     constructor() {
 
