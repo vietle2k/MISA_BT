@@ -330,3 +330,7 @@
     background-color: #ffffff;
     cursor: pointer;
 }
+
+.required {
+    border: 1px solid red !important;
+}

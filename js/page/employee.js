@@ -9,9 +9,11 @@ $(document).ready(function() {
     console.log(mapDepartment);
     console.log(mapPosition);
     loadData();
-
+    TheActivity = "add";
+    var EmployeeIdedit;
     // Hiển thị form nhập liệu thêm nhân viên
     $('.btn-add-employee').click(function() {
+        TheActivity = "add";
         $('.m-dialog').removeClass('dialog-hidden');
         $('.employeecode').focus();
         $.ajax({
@@ -37,9 +39,9 @@ $(document).ready(function() {
     $('.btn-save').click(function() {
         $('.m-dialog').addClass('dialog-hidden');
         //build data
-        var a = $('.workstatus input').val();
-        // a.split('.');
-        console.log(a);
+        // var a = $('.workstatus input').val();
+        // // a.split('.');
+        // console.log(a);
         var checkGenderId;
         if ($('.gendername input').val() == "Nam") checkGenderId = 1;
         else if ($('.gendername input').val() == "Nữ") checkGenderId = 0;
@@ -56,41 +58,58 @@ $(document).ready(function() {
         }
         var employee = {
 
-            "EmployeeCode": $('.employeecode').val(),
-            "FullName": $('.fullname').val(),
-            // "GenderName": $('.gendername input').val(),
-            "Gender": checkGenderId,
-            "DateOfBirth": $('.date_box').val(),
-            // "IdentityNumber": 
-            // "IdentityDate":
-            // "IdentityPlace":
-            "Email": $('.email').val(),
-            "PhoneNumber": $('.phonenumber').val(),
-            // "PositionName": $('.positionname input').val(),
-            "PositionId": checkPositionId,
-            "DepartmentId": checkDepartmentId,
-            // "DepartmentName": $('.departmentname input').val(),
-            // "PersonalTaxCode":
-            "Salary": $('.salary_employee').val().toString().replaceAll('.', '')
-                // "JoinDate":
+                "EmployeeCode": $('.employeecode').val(),
+                "FullName": $('.fullname').val(),
+                // "GenderName": $('.gendername input').val(),
+                "Gender": checkGenderId,
+                "DateOfBirth": $('.date_box').val(),
+                "IdentityNumber": $('.identity').val(),
+                // "IdentityDate":
+                // "IdentityPlace":
+                "Email": $('.email').val(),
+                "PhoneNumber": $('.phonenumber').val(),
+                // "PositionName": $('.positionname input').val(),
+                "PositionId": checkPositionId,
+                "DepartmentId": checkDepartmentId,
+                // "DepartmentName": $('.departmentname input').val(),
+                // "PersonalTaxCode":
+                "Salary": $('.salary_employee').val().toString().replaceAll('.', '')
+                    // "JoinDate":
 
-            // "WorkStatus": $('.workstatus input').val().toString()
+                // "WorkStatus": $('.workstatus input').val().toString()
 
-        }
+            }
+            // console.log($('.date_box').val());
         setTimeout(function() {
             console.log(JSON.stringify(employee))
-            $.ajax({
-                url: "http://cukcuk.manhnv.net/v1/Employees",
-                method: "POST",
-                data: JSON.stringify(employee),
-                contentType: 'application/json'
-            }).done(function(res) {
-                // alert("Them duoc roi");
-                console.log(employee);
-                getData();
-            }).fail(function(res) {
+            if (TheActivity == "add") {
+                $.ajax({
+                    url: "http://cukcuk.manhnv.net/v1/Employees",
+                    method: "POST",
+                    data: JSON.stringify(employee),
+                    contentType: 'application/json'
+                }).done(function(res) {
+                    // alert("Them duoc roi");
+                    console.log(employee);
+                    getData();
+                }).fail(function(res) {
 
-            })
+                })
+
+            } else if (TheActivity == "edit") {
+                $.ajax({
+                    url: "http://cukcuk.manhnv.net/v1/Employees/" + EmployeeIdedit,
+                    method: "PUT",
+                    data: JSON.stringify(employee),
+                    contentType: 'application/json'
+                }).done(function(res) {
+                    // alert("Them duoc roi");
+                    console.log(employee);
+                    getData();
+                }).fail(function(res) {
+
+                })
+            }
         }, 0)
 
     });
@@ -149,7 +168,7 @@ $(document).ready(function() {
         })
         //sua thog tin nhan vien
     $('.tblEmployee tbody').on('click', '.btn-editEmployee', function() {
-
+            TheActivity = "edit";
             // $('.m-warning').removeClass('warning-hidden');
             $('.dialog-detail').removeClass('dialog-hidden');
             // $(this).find('td').attr("fieldname");
@@ -162,10 +181,12 @@ $(document).ready(function() {
                 contentType: "application/json"
             }).done(function(response) {
                 // console.log(employeeCodeDelete);
+                EmployeeIdedit = response.Data[0].EmployeeId;
+                console.log(formatDateVal(response.Data[0].DateOfBirth))
                 $('.employeecode').val(response.Data[0].EmployeeCode);
                 $('.fullname').val(response.Data[0].FullName);
                 $('.gendername input').val(response.Data[0].GenderName);
-                $('.date_box').val(response.Data[0].DateOfBirth);
+                $('.date_box').val(formatDateVal(response.Data[0].DateOfBirth));
                 $('.email').val(response.Data[0].Email);
                 $('.phonenumber').val(response.Data[0].PhoneNumber);
                 $('.positionname input').val(response.Data[0].PositionName);
@@ -286,6 +307,57 @@ $(document).ready(function() {
         // $('.navbar-content').css('border-right', 'none');
         // $('.nav-item').css('border-right', '1px solid #e5e5e5');
     })
+    $('.fullname').blur(function() {
+        if ($('.fullname').val() == "") {
+            console.log("thieur");
+            $('.fullname').addClass('required');
+            $('.fullname').attr('title', 'Bạn phải nhập tên nhân viên!')
+        } else {
+            $('.fullname').removeClass('required');
+            $('.fullname').attr('title', '');
+        }
+    })
+
+    $('.employeecode').blur(function() {
+        if ($('.employeecode').val() == "") {
+
+            $('.employeecode').addClass('required');
+            $('.employeecode').attr('title', 'Bạn phải nhập mã nhân viên!')
+        } else {
+            $('.employeecode').removeClass('required');
+            $('.employeecode').attr('title', '');
+        }
+    })
+    $('.identity').blur(function() {
+        if ($('.identity').val() == "") {
+
+            $('.identity').addClass('required');
+            $('.identity').attr('title', 'Bạn phải nhập số CMTND!')
+        } else {
+            $('.identity').removeClass('required');
+            $('.identity').attr('title', '');
+        }
+    })
+    $('.email').blur(function() {
+        if ($('.email').val() == "") {
+
+            $('.email').addClass('required');
+            $('.email').attr('title', 'Bạn phải nhập email!');
+        } else {
+            $('.email').removeClass('required');
+            $('.email').attr('title', 'Bạn phải nhập email!');
+        }
+    })
+    $('.phonenumber').blur(function() {
+        if ($('.phonenumber').val() == "") {
+
+            $('.phonenumber').addClass('required');
+            $('.phonenumber').attr('title', 'Bạn phải nhập tên nhân viên!');
+        } else {
+            $('.phonenumber').removeClass('required');
+            $('.phonenumber').attr('title', '');
+        }
+    })
 })
 
 function loadData() {
@@ -302,6 +374,17 @@ function formatDate(date) {
     if (date_fm < 10) date_fm = '0' + date_fm;
     if (month_fm < 10) month_fm = '0' + month_fm;
     return date_fm + '/' + month_fm + '/' + year_fm;
+}
+
+function formatDateVal(date) {
+    if (date == null) return "";
+    var date = new Date(date);
+    var date_fm = date.getDate();
+    var month_fm = date.getMonth() + 1;
+    var year_fm = date.getFullYear();
+    if (date_fm < 10) date_fm = '0' + date_fm;
+    if (month_fm < 10) month_fm = '0' + month_fm;
+    return year_fm + '-' + month_fm + '-' + date_fm;
 }
 
 // Định dạng money
