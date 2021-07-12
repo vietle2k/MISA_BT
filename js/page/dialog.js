@@ -28,6 +28,7 @@ $(document).ready(function() {
         $('.dialog-dropdown-text-vt input').val($(this).find('.dialog-dropdown-content-text').text());
     });
     $('.btn-dropdown3').click(function() {
+        $(this).parent().parent().find('.dialog-text').focus();
         $('.dialog-dropdown-content').removeClass('hidden');
         $('.dialog-dropdown-icon-vt').toggleClass('dialog-dropup-icon-vt');
         $(this).parent().parent().find('.dialog-dropdown-content').toggle();
@@ -45,6 +46,7 @@ $(document).ready(function() {
         $('.dialog-dropdown-text-pb input').val($(this).find('.dialog-dropdown-content-text').text());
     });
     $('.btn-dropdown4').click(function() {
+        $(this).parent().parent().find('.dialog-pb-text').focus();
         $('.dialog-dropdown-content').removeClass('hidden');
         $('.dialog-dropdown-icon-pb').toggleClass('dialog-dropup-icon-pb');
         $(this).parent().parent().find('.dialog-dropdown-content').toggle();
@@ -66,5 +68,208 @@ $(document).ready(function() {
         $('.dialog-dropdown-icon-ttcv').toggleClass('dialog-dropup-icon-ttcv');
         $(this).parent().parent().find('.dialog-dropdown-content').toggle();
         // $('.btn-dropdown').toggleClass('btn-dropup');
+    })
+    var InputVal;
+    var item;
+    var currentFocus = -1;
+    $('.dialog-text').focus(function() {
+        $(this).val('');
+        $(this).parent().parent().parent().find('.dialog-dropdown-content').css('display', 'block !important');
+    })
+    $('.dialog-text').keyup(function(e) {
+        InputVal = $(this).val().toLowerCase();
+
+
+        if (InputVal) {
+            $(this).parent().parent().parent().find('.dialog-dropdown-content').show()
+            item = $('.dialog-content-two').find('.dialog-dropdown-content-text');
+            // console.log(item[0]);
+            $.each(item, function() {
+                if ($(this).text().toString().toLowerCase().search(InputVal) > -1) {
+                    // $(this).parent().show();
+                    // console.log($(this).parent())
+                    $(this).addClass('match');
+                    $(this).parent().parent().removeClass('hide');
+                    // $(this).parent().parent().find('.content-two').addClass('hide');
+                    $(this).parent().show();
+                    // $(this).parent().removeClass('hide');
+                } else {
+                    $(this).parent().parent().removeClass('hide');
+                    $(this).parent().hide();
+                    $(this).removeClass('match');
+
+                }
+            })
+            item = item.filter(function() {
+                return $(this).hasClass('match');
+            })
+            if (e.keyCode == 38) {
+                currentFocus--;
+                for (var i = 0; i < item.length; i++) {
+                    $(item[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus >= item.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (item.length - 1);
+                /*add class "autocomplete-active":*/
+                $(item[currentFocus]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 40) {
+                currentFocus++;
+                for (var i = 0; i < item.length; i++) {
+                    console.log($(item[i]).parent());
+                    $(item[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus >= item.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (item.length - 1);
+                /*add class "autocomplete-active":*/
+                console.log(currentFocus);
+                $(item[currentFocus]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 13) {
+                // $(item[itemFocus]).parent().siblings().css('background', '#fff');
+                // $(item[itemFocus]).parent().css('background-color', '#019160');
+                // console.log($(item[itemFocus]).parent());
+                $('.dialog-text').blur();
+                if (currentFocus > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (item) $(item[currentFocus]).parent().click();
+                }
+
+            }
+        } else {
+            item = $('.dialog-content-two').find('.dialog-dropdown-content-text');
+
+            $(this).parent().parent().parent().find('.dialog-dropdown-content').hide();
+            if (e.keyCode == 40) {
+                $(this).parent().parent().parent().find('.dialog-dropdown-content').show();
+                currentFocus++;
+                for (var i = 0; i < item.length; i++) {
+                    console.log($(item[i]).parent());
+                    $(item[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus >= item.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (item.length - 1);
+                /*add class "autocomplete-active":*/
+                console.log(currentFocus);
+                $(item[currentFocus]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 13) {
+                // $(item[itemFocus]).parent().siblings().css('background', '#fff');
+                // $(item[itemFocus]).parent().css('background-color', '#019160');
+                // console.log($(item[itemFocus]).parent());
+
+                //e.preventDefault();
+                $('.dialog-text').blur();
+
+                if (currentFocus > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (item) $(item[currentFocus]).parent().click();
+                }
+                $(this).parent().parent().parent().find('.dialog-dropdown-content').hide();
+
+            }
+
+        }
+
+        // console.log(item);
+
+
+    })
+    $('.dialog-pb-text').focus(function() {
+        $(this).val('');
+        $(this).parent().parent().parent().find('.dialog-dropdown-content').css('display', 'block !important');
+    })
+    $('.dialog-pb-text').keyup(function(e) {
+        InputVal = $(this).val().toLowerCase();
+
+
+        if (InputVal) {
+            $(this).parent().parent().parent().find('.dialog-dropdown-content').show()
+            item = $('.dialog-content-three').find('.dialog-dropdown-content-text');
+            // console.log(item[0]);
+            $.each(item, function() {
+                if ($(this).text().toString().toLowerCase().search(InputVal) > -1) {
+                    // $(this).parent().show();
+                    // console.log($(this).parent())
+                    $(this).addClass('match');
+                    $(this).parent().parent().removeClass('hide');
+                    // $(this).parent().parent().find('.content-two').addClass('hide');
+                    $(this).parent().show();
+                    // $(this).parent().removeClass('hide');
+                } else {
+                    $(this).parent().parent().removeClass('hide');
+                    $(this).parent().hide();
+                    $(this).removeClass('match');
+
+                }
+            })
+            item = item.filter(function() {
+                return $(this).hasClass('match');
+            })
+            if (e.keyCode == 38) {
+                currentFocus--;
+                for (var i = 0; i < item.length; i++) {
+                    $(item[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus >= item.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (item.length - 1);
+                /*add class "autocomplete-active":*/
+                $(item[currentFocus]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 40) {
+                currentFocus++;
+                for (var i = 0; i < item.length; i++) {
+                    console.log($(item[i]).parent());
+                    $(item[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus >= item.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (item.length - 1);
+                /*add class "autocomplete-active":*/
+                console.log(currentFocus);
+                $(item[currentFocus]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 13) {
+                // $(item[itemFocus]).parent().siblings().css('background', '#fff');
+                // $(item[itemFocus]).parent().css('background-color', '#019160');
+                // console.log($(item[itemFocus]).parent());
+                $('.dialog-pb-text').blur();
+                if (currentFocus > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (item) $(item[currentFocus]).parent().click();
+                }
+
+            }
+        } else {
+            item = $('.dialog-content-three').find('.dialog-dropdown-content-text');
+
+            // $(this).parent().parent().parent().find('.dialog-dropdown-content').hide();
+            if (e.keyCode == 40) {
+                $(this).parent().parent().parent().find('.dialog-dropdown-content').show();
+                currentFocus++;
+                for (var i = 0; i < item.length; i++) {
+                    console.log($(item[i]).parent());
+                    $(item[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus >= item.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (item.length - 1);
+                /*add class "autocomplete-active":*/
+                console.log(currentFocus);
+                $(item[currentFocus]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 13) {
+                // $(item[itemFocus]).parent().siblings().css('background', '#fff');
+                // $(item[itemFocus]).parent().css('background-color', '#019160');
+                // console.log($(item[itemFocus]).parent());
+
+                //e.preventDefault();
+                $('.dialog-pb-text').blur();
+
+                if (currentFocus > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (item) $(item[currentFocus]).parent().click();
+                }
+                $(this).parent().parent().parent().find('.dialog-dropdown-content').hide();
+
+            }
+
+        }
+
+        // console.log(item);
+
+
     })
 })

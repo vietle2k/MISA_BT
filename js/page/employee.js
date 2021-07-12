@@ -1,13 +1,47 @@
 $(document).ready(function() {
     var mapDepartment = new Map();
     var mapPosition = new Map();
-    getData();
+
     // console.table(data);
     // buildDataEmployees(data);
     mapDepartment = getInforDepartment();
+    for (var key of mapDepartment.keys()) {
+        var html = '<div class="dialog-content-three vt" style="position: flex;">' +
+            '<div class="dialog-config-icon">' +
+            '<div class="dialog-dropdown-content-icon"></div>' +
+            '</div>' +
+            '<div class="dialog-dropdown-content-text vt2">' + key + '</div>' +
+            '</div>';
+        $('.dialog-department').append(html);
+        var temp = '<div class="content-one" style="position: flex;">' +
+            '<div class="config-icon">' +
+            '<div class="dropdown-content-icon"></div>' +
+            '</div>' +
+            '<div class="dropdown-content-text">' + key + '</div>' +
+            '</div>';
+        $('.depar-combox').append(temp);
+    }
+
     mapPosition = getInforPosition();
-    console.log(mapDepartment);
-    console.log(mapPosition);
+    for (var key of mapPosition.keys()) {
+        var html = '<div class="dialog-content-two vt" style="position: flex;">' +
+            '<div class="dialog-config-icon">' +
+            '<div class="dialog-dropdown-content-icon"></div>' +
+            '</div>' +
+            '<div class="dialog-dropdown-content-text vt2">' + key + '</div>' +
+            '</div>';
+        $('.dialog-position').append(html);
+        var temp = '<div class="content-two" style="position: flex;">' +
+            '<div class="config-icon">' +
+            '<div class="dropdown-content-icon"></div>' +
+            '</div>' +
+            '<div class="dropdown-content-text">' + key + '</div>' +
+            '</div>';
+        $('.pos-combox').append(temp);
+    }
+    // console.log(mapDepartment);
+    // console.log(mapPosition);
+    getData();
     loadData();
     TheActivity = "add";
     var EmployeeIdedit;
@@ -51,6 +85,7 @@ $(document).ready(function() {
         for (var key of mapDepartment.keys()) {
             if (key == $('.departmentname input').val()) checkDepartmentId = mapDepartment.get(key);
         }
+
 
         var checkPositionId;
         for (var key of mapPosition.keys()) {
@@ -228,6 +263,7 @@ $(document).ready(function() {
         $('.dropdown-icon').toggleClass('dropup-icon');
     })
     $('.btn-dropdown').click(function() {
+        $('.department-input').focus();
         $('.dropdown-content').removeClass('hidden');
         $('.dropdown-header-icon').toggleClass('dropup-header-icon');
 
@@ -235,6 +271,7 @@ $(document).ready(function() {
         // $('.btn-dropdown').toggleClass('btn-dropup');
     })
     $('.btn-dropdown2').click(function() {
+        $('.content-text').focus();
         $('.dropdown-content').removeClass('hidden');
         $('.dropdown-icon').toggleClass('dropup-icon');
 
@@ -243,17 +280,225 @@ $(document).ready(function() {
     })
     $('.content-one').click(function() {
         $(this).parent().toggle();
-        $('.dropdown-header-text').text($(this).first().text());
+        $('.dropdown-header-text input').val($(this).first().text());
 
 
     })
     $('.content-two').click(function() {
-            $(this).parent().toggle();
-            $('.dropdown-text').text($(this).first().text());
+
+        $(this).parent().toggle();
+        $('.dropdown-text input').val($(this).first().text());
 
 
-        })
-        // format mức lương cơ bản đúng chuẩn trong form nhập thêm thông tin nhân viên
+    })
+    var InputVal;
+    var item;
+    var currentFocus1 = -1;
+    var currentFocus = -1;
+    $('.department-input').focus(function() {
+        $(this).val('');
+        $(this).parent().parent().parent().find('.dropdown-content').css('display', 'block !important');
+    })
+    $('.content-text').focus(function() {
+        $(this).val('');
+        $(this).parent().parent().parent().find('.dropdown-content').css('display', 'block !important');
+    })
+    $('.content-text').keyup(function(e) {
+        InputVal = $(this).val().toLowerCase();
+
+
+        if (InputVal) {
+            $(this).parent().parent().parent().find('.dropdown-content').show()
+            item = $('.content-two').find('.dropdown-content-text');
+            // console.log(item[0]);
+            $.each(item, function() {
+                if ($(this).text().toString().toLowerCase().search(InputVal) > -1) {
+                    // $(this).parent().show();
+                    // console.log($(this).parent())
+                    $(this).addClass('match');
+                    $(this).parent().parent().removeClass('hide');
+                    // $(this).parent().parent().find('.content-two').addClass('hide');
+                    $(this).parent().show();
+                    // $(this).parent().removeClass('hide');
+                } else {
+                    $(this).parent().parent().removeClass('hide');
+                    $(this).parent().hide();
+                    $(this).removeClass('match');
+
+                }
+            })
+            item = item.filter(function() {
+                return $(this).hasClass('match');
+            })
+            if (e.keyCode == 38) {
+                currentFocus--;
+                for (var i = 0; i < item.length; i++) {
+                    $(item[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus >= item.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (item.length - 1);
+                /*add class "autocomplete-active":*/
+                $(item[currentFocus]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 40) {
+                currentFocus++;
+                for (var i = 0; i < item.length; i++) {
+                    console.log($(item[i]).parent());
+                    $(item[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus >= item.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (item.length - 1);
+                /*add class "autocomplete-active":*/
+                console.log(currentFocus);
+                $(item[currentFocus]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 13) {
+                // $(item[itemFocus]).parent().siblings().css('background', '#fff');
+                // $(item[itemFocus]).parent().css('background-color', '#019160');
+                // console.log($(item[itemFocus]).parent());
+                $('.content-text').blur();
+                if (currentFocus > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (item) $(item[currentFocus]).parent().click();
+                }
+
+            }
+        } else {
+            item = $('.content-two').find('.dropdown-content-text');
+
+            $(this).parent().parent().parent().find('.dropdown-content').hide();
+            if (e.keyCode == 40) {
+                $(this).parent().parent().parent().find('.dropdown-content').show();
+                currentFocus++;
+                for (var i = 0; i < item.length; i++) {
+                    console.log($(item[i]).parent());
+                    $(item[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus >= item.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (item.length - 1);
+                /*add class "autocomplete-active":*/
+                console.log(currentFocus);
+                $(item[currentFocus]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 13) {
+                // $(item[itemFocus]).parent().siblings().css('background', '#fff');
+                // $(item[itemFocus]).parent().css('background-color', '#019160');
+                // console.log($(item[itemFocus]).parent());
+
+                //e.preventDefault();
+                $('.content-text').blur();
+
+                if (currentFocus > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (item) $(item[currentFocus]).parent().click();
+                }
+                $(this).parent().parent().parent().find('.dropdown-content').hide();
+
+            }
+
+        }
+
+        // console.log(item);
+
+
+    })
+    $('.department-input').keyup(function(e) {
+        InputVal = $(this).val().toLowerCase();
+
+
+        if (InputVal) {
+            $(this).parent().parent().parent().find('.dropdown-content').show();
+            item = $('.content-one').find('.dropdown-content-text');
+            // console.log(item[0]);
+            $.each(item, function() {
+                if ($(this).text().toString().toLowerCase().search(InputVal) > -1) {
+                    // $(this).parent().show();
+                    // console.log($(this).parent())
+                    $(this).addClass('match');
+                    $(this).parent().parent().removeClass('hide');
+                    // $(this).parent().parent().find('.content-two').addClass('hide');
+                    $(this).parent().show();
+                    // $(this).parent().removeClass('hide');
+                } else {
+                    $(this).parent().parent().removeClass('hide');
+                    $(this).parent().hide();
+                    $(this).removeClass('match');
+
+                }
+            })
+            item = item.filter(function() {
+                return $(this).hasClass('match');
+            })
+            if (e.keyCode == 38) {
+                currentFocus1--;
+                for (var i = 0; i < item.length; i++) {
+                    $(item[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus1 >= item.length) currentFocus1 = 0;
+                if (currentFocus1 < 0) currentFocus1 = (item.length - 1);
+                /*add class "autocomplete-active":*/
+                $(item[currentFocus1]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 40) {
+                currentFocus1++;
+                for (var i = 0; i < item.length; i++) {
+                    console.log($(item[i]).parent());
+                    $(item[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus1 >= item.length) currentFocus1 = 0;
+                if (currentFocus1 < 0) currentFocus1 = (item.length - 1);
+                /*add class "autocomplete-active":*/
+                console.log(currentFocus1);
+                $(item[currentFocus1]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 13) {
+                // $(item[itemFocus]).parent().siblings().css('background', '#fff');
+                // $(item[itemFocus]).parent().css('background-color', '#019160');
+                // console.log($(item[itemFocus]).parent());
+                console.log($(item[currentFocus1]).parent());
+                $('.department-input').blur();
+                if (currentFocus > -1) {
+                    /*and simulate a click on the "active" item:*/
+
+                    if (item) $(item[currentFocus1]).parent().click();
+                }
+
+            }
+        } else {
+            item = $('.content-one').find('.dropdown-content-text');
+
+            $(this).parent().parent().parent().find('.dropdown-content').hide();
+            if (e.keyCode == 40) {
+                $(this).parent().parent().parent().find('.dropdown-content').show();
+                currentFocus1++;
+                for (var i = 0; i < item.length; i++) {
+                    console.log($(item[i]).parent());
+                    $(item[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus1 >= item.length) currentFocus1 = 0;
+                if (currentFocus1 < 0) currentFocus1 = (item.length - 1);
+                /*add class "autocomplete-active":*/
+                console.log(currentFocus1);
+                $(item[currentFocus1]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 13) {
+                // $(item[itemFocus]).parent().siblings().css('background', '#fff');
+                // $(item[itemFocus]).parent().css('background-color', '#019160');
+                // console.log($(item[itemFocus]).parent());
+
+                //e.preventDefault();
+                $('.department-input').blur();
+
+                if (currentFocus1 > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (item) $(item[currentFocus1]).parent().click();
+                }
+                $(this).parent().parent().parent().find('.dropdown-content').hide();
+
+            }
+
+        }
+
+        // console.log(item);
+
+
+    })
+
+    // format mức lương cơ bản đúng chuẩn trong form nhập thêm thông tin nhân viên
     $('.salary_employee').on("keyup", function(event) {
 
 
@@ -365,6 +610,9 @@ function loadData() {
 }
 
 // Định dạng ngày tháng năm
+/**
+ * 
+ */
 function formatDate(date) {
     if (date == null) return "";
     var date = new Date(date);
@@ -375,7 +623,9 @@ function formatDate(date) {
     if (month_fm < 10) month_fm = '0' + month_fm;
     return date_fm + '/' + month_fm + '/' + year_fm;
 }
-
+/**
+ * 
+ */
 function formatDateVal(date) {
     if (date == null) return "";
     var date = new Date(date);
