@@ -178,6 +178,10 @@ $(document).ready(function() {
     });
     var employeeCodeSelected;
     var employeeCodeDelete;
+    var employeeDepartmentId = "";
+    var employeePostionId = "";
+    var employeeDepartmentName = "";
+    var employeePostionName = "";
     $('.tblEmployee tbody').on('click', '.btn-deleteEmployee', function() {
 
             $('.m-warning').removeClass('warning-hidden');
@@ -354,11 +358,32 @@ $(document).ready(function() {
                 // $(item[itemFocus]).parent().siblings().css('background', '#fff');
                 // $(item[itemFocus]).parent().css('background-color', '#019160');
                 // console.log($(item[itemFocus]).parent());
+
                 $('.content-text').blur();
                 if (currentFocus > -1) {
                     /*and simulate a click on the "active" item:*/
                     if (item) $(item[currentFocus]).parent().click();
+                    employeePostionName = $(item[currentFocus]).text();
+                    for (var key of mapPosition.keys()) {
+                        // console.log(key);
+                        // console.log(mapDepartment.get(key));
+                        if (key == employeePostionName) employeePostionId = mapPosition.get(key);
+                        // console.log(employeeDepartmentId);
+                    }
                 }
+                $.ajax({
+                    method: "GET",
+                    url: `http://cukcuk.manhnv.net/v1/Employees/employeeFilter?pageSize=100&pageNumber=1&employeeFilter=NV&departmentId=${employeeDepartmentId}&positionId=${employeePostionId}`,
+                    data: "null",
+                    async: false,
+                    contentType: "application/json"
+                }).done(function(response) {
+                    buildDataEmployees(response.Data);
+                    console.log(employeePostionName);
+                    console.log(employeePostionId);
+                }).fail(function(respone) {
+                    alert("bi loi roi");
+                });
 
             }
         } else {
@@ -388,9 +413,28 @@ $(document).ready(function() {
                 if (currentFocus > -1) {
                     /*and simulate a click on the "active" item:*/
                     if (item) $(item[currentFocus]).parent().click();
+                    employeePostionName = $(item[currentFocus]).text();
+                    for (var key of mapPosition.keys()) {
+                        // console.log(key);
+                        // console.log(mapDepartment.get(key));
+                        if (key == employeePostionName) employeePostionId = mapPosition.get(key);
+                        // console.log(employeeDepartmentId);
+                    }
                 }
                 $(this).parent().parent().parent().find('.dropdown-content').hide();
-
+                $.ajax({
+                    method: "GET",
+                    url: `http://cukcuk.manhnv.net/v1/Employees/employeeFilter?pageSize=100&pageNumber=1&employeeFilter=NV&departmentId=${employeeDepartmentId}&positionId=${employeePostionId}`,
+                    data: "null",
+                    async: false,
+                    contentType: "application/json"
+                }).done(function(response) {
+                    buildDataEmployees(response.Data);
+                    console.log(employeePostionName);
+                    console.log(employeePostionId);
+                }).fail(function(respone) {
+                    alert("bi loi roi");
+                });
             }
 
         }
@@ -452,11 +496,31 @@ $(document).ready(function() {
                 // console.log($(item[itemFocus]).parent());
                 console.log($(item[currentFocus1]).parent());
                 $('.department-input').blur();
-                if (currentFocus > -1) {
+                if (currentFocus1 > -1) {
                     /*and simulate a click on the "active" item:*/
-
                     if (item) $(item[currentFocus1]).parent().click();
+                    console.log('abc');
+                    employeeDepartmentName = $(item[currentFocus1]).text();
+                    for (var key of mapDepartment.keys()) {
+                        // console.log(key);
+                        // console.log(mapDepartment.get(key));
+                        if (key == employeeDepartmentName) employeeDepartmentId = mapDepartment.get(key);
+                        // console.log(employeeDepartmentId);
+                    }
                 }
+                $.ajax({
+                    method: "GET",
+                    url: `http://cukcuk.manhnv.net/v1/Employees/employeeFilter?pageSize=100&pageNumber=1&employeeFilter=NV&departmentId=${employeeDepartmentId}&positionId=${employeePostionId}`,
+                    data: "null",
+                    async: false,
+                    contentType: "application/json"
+                }).done(function(response) {
+                    buildDataEmployees(response.Data);
+                    console.log(employeeDepartmentName);
+                    console.log(employeeDepartmentId)
+                }).fail(function(respone) {
+                    alert("bi loi roi");
+                });
 
             }
         } else {
@@ -486,8 +550,31 @@ $(document).ready(function() {
                 if (currentFocus1 > -1) {
                     /*and simulate a click on the "active" item:*/
                     if (item) $(item[currentFocus1]).parent().click();
+                    employeeDepartmentName = $(item[currentFocus1]).text();
+                    for (var key of mapDepartment.keys()) {
+                        // console.log(key);
+                        // console.log(mapDepartment.get(key));
+                        if (key == employeeDepartmentName) employeeDepartmentId = mapDepartment.get(key);
+                        // console.log(employeeDepartmentId);
+                    }
+
                 }
                 $(this).parent().parent().parent().find('.dropdown-content').hide();
+
+                $.ajax({
+                    method: "GET",
+                    url: `http://cukcuk.manhnv.net/v1/Employees/employeeFilter?pageSize=100&pageNumber=1&employeeFilter=NV&departmentId=${employeeDepartmentId}&positionId=${employeePostionId}`,
+                    data: "null",
+                    async: false,
+                    contentType: "application/json"
+                }).done(function(response) {
+                    buildDataEmployees(response.Data);
+                    console.log(employeeDepartmentName);
+                    console.log(employeeDepartmentId)
+                }).fail(function(respone) {
+                    alert("bi loi roi");
+                });
+
 
             }
 
@@ -574,30 +661,39 @@ $(document).ready(function() {
         }
     })
     $('.identity').blur(function() {
-        if ($('.identity').val() == "") {
+        if (validateIdentity($('.identity').val()) == false) {
 
             $('.identity').addClass('required');
-            $('.identity').attr('title', 'Bạn phải nhập số CMTND!')
+            $('.identity').attr('title', 'Bạn phải nhập đúng số CMTND!')
         } else {
             $('.identity').removeClass('required');
             $('.identity').attr('title', '');
         }
     })
     $('.email').blur(function() {
-        if ($('.email').val() == "") {
-
+        if (!validateEmail($('.email').val())) {
             $('.email').addClass('required');
-            $('.email').attr('title', 'Bạn phải nhập email!');
+            $('.email').attr('title', 'Bạn phải nhập đúng định dạng email!');
         } else {
             $('.email').removeClass('required');
-            $('.email').attr('title', 'Bạn phải nhập email!');
+            $('.email').attr('title', 'Bạn phải nhập đúng định dạng email!');
         }
+        // if ($('.email').val() == "") {
+
+        //     $('.email').addClass('required');
+        //     $('.email').attr('title', 'Bạn phải nhập email!');
+        // } else {
+        //     $('.email').removeClass('required');
+        //     $('.email').attr('title', 'Bạn phải nhập email!');
+        // }
     })
     $('.phonenumber').blur(function() {
-        if ($('.phonenumber').val() == "") {
+        console.log($('.phonenumber').val())
+        console.log(validatePhoneNumber($('.phonenumber').val()))
+        if (!validatePhoneNumber($('.phonenumber').val())) {
 
             $('.phonenumber').addClass('required');
-            $('.phonenumber').attr('title', 'Bạn phải nhập tên nhân viên!');
+            $('.phonenumber').attr('title', 'Bạn phải đúng số điện thoại!');
         } else {
             $('.phonenumber').removeClass('required');
             $('.phonenumber').attr('title', '');
@@ -698,6 +794,7 @@ function buildDataEmployees(data) {
         //     $('.btn-editEmployee').css('background-color', '#ffffff');
         //     $('.btn-deleteEmployee').css('background-color', '#ffffff');
         // }
+        if (employee.GenderName == null) employee.GenderName = "";
         var trHTML = $(`<tr>
                                 <td fieldname = "EmployeeCode">${employee.EmployeeCode}</td>
                                 <td fieldname = "FullName">${employee.FullName}</td>
@@ -758,6 +855,29 @@ function getInforPosition() {
     });
     return mapTempPosition;
 }
+
+function validateEmail(email) {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
+}
+
+function validatePhoneNumber(PhoneNumber) {
+    for (let i; i < PhoneNumber.length; ++i) {
+        if (!isNumber(PhoneNumber[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function validateIdentity(Identity) {
+    if (identity == "" || identity == null) return false;
+    for (var i; i < Identity.length; ++i) {
+        if (!(Identity[i].match(/^-{0,1}\d+$/))) return false;
+    }
+}
+
+function isNumber(n) { return /^-?[\d.]+(?:e-?\d+)?$/.test(n); }
 class Customer {
     constructor() {
 
