@@ -14,7 +14,8 @@ input:focus {
 }
 
 input.dialog-text,
-input.dialog-pb-text {
+input.dialog-pb-text,
+input.gender-text {
     height: 30px;
     width: 180px;
     border: none;

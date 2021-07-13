@@ -6,6 +6,7 @@ $(document).ready(function() {
     // buildDataEmployees(data);
     mapDepartment = getInforDepartment();
     for (var key of mapDepartment.keys()) {
+        console.log(mapDepartment.get(key));
         var html = '<div class="dialog-content-three vt" style="position: flex;">' +
             '<div class="dialog-config-icon">' +
             '<div class="dialog-dropdown-content-icon"></div>' +
@@ -17,7 +18,7 @@ $(document).ready(function() {
             '<div class="config-icon">' +
             '<div class="dropdown-content-icon"></div>' +
             '</div>' +
-            '<div class="dropdown-content-text">' + key + '</div>' +
+            '<div class="dropdown-content-text" id="' + mapDepartment.get(key) + '">' + key + '</div>' +
             '</div>';
         $('.depar-combox').append(temp);
     }
@@ -35,7 +36,7 @@ $(document).ready(function() {
             '<div class="config-icon">' +
             '<div class="dropdown-content-icon"></div>' +
             '</div>' +
-            '<div class="dropdown-content-text">' + key + '</div>' +
+            '<div class="dropdown-content-text" id="' + mapPosition.get(key) + '">' + key + '</div>' +
             '</div>';
         $('.pos-combox').append(temp);
     }
@@ -285,14 +286,52 @@ $(document).ready(function() {
     $('.content-one').click(function() {
         $(this).parent().toggle();
         $('.dropdown-header-text input').val($(this).first().text());
-
+        employeeDepartmentName = $(this).first().text();
+        for (var key of mapDepartment.keys()) {
+            // console.log(key);
+            // console.log(mapDepartment.get(key));
+            if (key == employeeDepartmentName) employeeDepartmentId = mapDepartment.get(key);
+            // console.log(employeeDepartmentId);
+        }
+        $.ajax({
+            method: "GET",
+            url: `http://cukcuk.manhnv.net/v1/Employees/employeeFilter?pageSize=100&pageNumber=1&employeeFilter=NV&departmentId=${employeeDepartmentId}&positionId=${employeePostionId}`,
+            data: "null",
+            async: false,
+            contentType: "application/json"
+        }).done(function(response) {
+            buildDataEmployees(response.Data);
+            // console.log(employeePostionName);
+            // console.log(employeePostionId);
+        }).fail(function(respone) {
+            alert("bi loi roi");
+        });
 
     })
     $('.content-two').click(function() {
 
         $(this).parent().toggle();
         $('.dropdown-text input').val($(this).first().text());
-
+        employeePostionName = $(this).first().text();
+        for (var key of mapPosition.keys()) {
+            // console.log(key);
+            // console.log(mapDepartment.get(key));
+            if (key == employeePostionName) employeePostionId = mapPosition.get(key);
+            // console.log(employeeDepartmentId);
+        }
+        $.ajax({
+            method: "GET",
+            url: `http://cukcuk.manhnv.net/v1/Employees/employeeFilter?pageSize=100&pageNumber=1&employeeFilter=NV&departmentId=${employeeDepartmentId}&positionId=${employeePostionId}`,
+            data: "null",
+            async: false,
+            contentType: "application/json"
+        }).done(function(response) {
+            buildDataEmployees(response.Data);
+            // console.log(employeePostionName);
+            // console.log(employeePostionId);
+        }).fail(function(respone) {
+            alert("bi loi roi");
+        });
 
     })
     var InputVal;
@@ -360,6 +399,8 @@ $(document).ready(function() {
                 // console.log($(item[itemFocus]).parent());
 
                 $('.content-text').blur();
+                $('input.content-text').attr('value', $(item[currentFocus]).attr('id'));
+                // debugger
                 if (currentFocus > -1) {
                     /*and simulate a click on the "active" item:*/
                     if (item) $(item[currentFocus]).parent().click();
@@ -402,6 +443,16 @@ $(document).ready(function() {
                 /*add class "autocomplete-active":*/
                 console.log(currentFocus);
                 $(item[currentFocus]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 38) {
+                $(this).parent().parent().parent().find('.dropdown-content').show();
+                currentFocus--;
+                for (var i = 0; i < item.length; i++) {
+                    $(item[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus >= item.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (item.length - 1);
+                /*add class "autocomplete-active":*/
+                $(item[currentFocus]).parent().addClass("autocomplete-active");
             } else if (e.keyCode == 13) {
                 // $(item[itemFocus]).parent().siblings().css('background', '#fff');
                 // $(item[itemFocus]).parent().css('background-color', '#019160');
@@ -409,7 +460,8 @@ $(document).ready(function() {
 
                 //e.preventDefault();
                 $('.content-text').blur();
-
+                $('input.content-text').attr('value', $(item[currentFocus]).attr('id'));
+                // $('.content-text').css('value', $(item[currentFocus]).attr('id'));
                 if (currentFocus > -1) {
                     /*and simulate a click on the "active" item:*/
                     if (item) $(item[currentFocus]).parent().click();
@@ -496,6 +548,7 @@ $(document).ready(function() {
                 // console.log($(item[itemFocus]).parent());
                 console.log($(item[currentFocus1]).parent());
                 $('.department-input').blur();
+                $('input.department-input').attr('value', $(item[currentFocus1]).attr('id'));
                 if (currentFocus1 > -1) {
                     /*and simulate a click on the "active" item:*/
                     if (item) $(item[currentFocus1]).parent().click();
@@ -539,6 +592,16 @@ $(document).ready(function() {
                 /*add class "autocomplete-active":*/
                 console.log(currentFocus1);
                 $(item[currentFocus1]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 38) {
+                $(this).parent().parent().parent().find('.dropdown-content').show();
+                currentFocus1--;
+                for (var i = 0; i < item.length; i++) {
+                    $(item[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus1 >= item.length) currentFocus1 = 0;
+                if (currentFocus1 < 0) currentFocus1 = (item.length - 1);
+                /*add class "autocomplete-active":*/
+                $(item[currentFocus1]).parent().addClass("autocomplete-active");
             } else if (e.keyCode == 13) {
                 // $(item[itemFocus]).parent().siblings().css('background', '#fff');
                 // $(item[itemFocus]).parent().css('background-color', '#019160');
@@ -546,7 +609,7 @@ $(document).ready(function() {
 
                 //e.preventDefault();
                 $('.department-input').blur();
-
+                $('input.department-input').attr('value', $(item[currentFocus1]).attr('id'));
                 if (currentFocus1 > -1) {
                     /*and simulate a click on the "active" item:*/
                     if (item) $(item[currentFocus1]).parent().click();
@@ -816,6 +879,7 @@ function buildDataEmployees(data) {
 
 }
 
+
 function getInforDepartment() {
     var mapTempDepartment = new Map();
     $.ajax({
@@ -876,6 +940,15 @@ function validateIdentity(Identity) {
         if (!(Identity[i].match(/^-{0,1}\d+$/))) return false;
     }
 }
+
+$.fn.extend({
+    getText: function() {
+        return $(this).find('input').val();
+    },
+    getValue: function() {
+        return $(this).find('input').attr('value');
+    }
+})
 
 function isNumber(n) { return /^-?[\d.]+(?:e-?\d+)?$/.test(n); }
 class Customer {

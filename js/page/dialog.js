@@ -11,10 +11,114 @@ $(document).ready(function() {
         $('.dialog-dropdown-header-text input').val($(this).find('.dialog-dropdown-content-text').text());
     });
     $('.dialog-btn-dropdown').click(function() {
+        $(this).parent().parent().find('.gender-text').focus();
         $('.dialog-dropdown-content').removeClass('hidden');
         $('.dialog-dropdown-header-icon').toggleClass('dialog-dropup-header-icon');
         $(this).parent().parent().find('.dialog-dropdown-content').toggle();
         // $('.btn-dropdown').toggleClass('btn-dropup');
+    })
+    var InputVal2;
+    var item2;
+    var currentFocus2 = -1;
+    $('.gender-text').focus(function() {
+        $(this).val('');
+        $(this).parent().parent().parent().find('.dialog-dropdown-content').css('display', 'block !important');
+    })
+    $('.gender-text').keyup(function(e) {
+        InputVal2 = $(this).val().toLowerCase();
+
+
+        if (InputVal2) {
+            $(this).parent().parent().parent().find('.dialog-dropdown-content').show()
+            item2 = $('.dialog-content-one').find('.dialog-dropdown-content-text');
+            // console.log(item[0]);
+            $.each(item2, function() {
+                if ($(this).text().toString().toLowerCase().search(InputVal2) > -1) {
+                    // $(this).parent().show();
+                    // console.log($(this).parent())
+                    $(this).addClass('match');
+                    $(this).parent().parent().removeClass('hide');
+                    // $(this).parent().parent().find('.content-two').addClass('hide');
+                    $(this).parent().show();
+                    // $(this).parent().removeClass('hide');
+                } else {
+                    $(this).parent().parent().removeClass('hide');
+                    $(this).parent().hide();
+                    $(this).removeClass('match');
+
+                }
+            })
+            item2 = item2.filter(function() {
+                return $(this).hasClass('match');
+            })
+            if (e.keyCode == 38) {
+                currentFocus2--;
+                for (var i = 0; i < item.length; i++) {
+                    $(item2[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus2 >= item2.length) currentFocus2 = 0;
+                if (currentFocus2 < 0) currentFocus2 = (item2.length - 1);
+                /*add class "autocomplete-active":*/
+                $(item2[currentFocus2]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 40) {
+                currentFocus2++;
+                for (var i = 0; i < item2.length; i++) {
+                    console.log($(item2[i]).parent());
+                    $(item2[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus2 >= item2.length) currentFocus2 = 0;
+                if (currentFocus2 < 0) currentFocus2 = (item2.length - 1);
+                /*add class "autocomplete-active":*/
+                console.log(currentFocus2);
+                $(item2[currentFocus2]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 13) {
+                // $(item[itemFocus]).parent().siblings().css('background', '#fff');
+                // $(item[itemFocus]).parent().css('background-color', '#019160');
+                // console.log($(item[itemFocus]).parent());
+                $('.gender-text').blur();
+                if (currentFocus2 > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (item2) $(item2[currentFocus2]).parent().click();
+                }
+
+            }
+        } else {
+            item2 = $('.dialog-content-one').find('.dialog-dropdown-content-text');
+
+            $(this).parent().parent().parent().find('.dialog-dropdown-content').hide();
+            if (e.keyCode == 40) {
+                $(this).parent().parent().parent().find('.dialog-dropdown-content').show();
+                currentFocus2++;
+                for (var i = 0; i < item2.length; i++) {
+                    console.log($(item2[i]).parent());
+                    $(item2[i]).parent().removeClass("autocomplete-active");
+                }
+                if (currentFocus2 >= item2.length) currentFocus2 = 0;
+                if (currentFocus2 < 0) currentFocus2 = (item2.length - 1);
+                /*add class "autocomplete-active":*/
+                console.log(currentFocus2);
+                $(item2[currentFocus2]).parent().addClass("autocomplete-active");
+            } else if (e.keyCode == 13) {
+                // $(item[itemFocus]).parent().siblings().css('background', '#fff');
+                // $(item[itemFocus]).parent().css('background-color', '#019160');
+                // console.log($(item[itemFocus]).parent());
+
+                //e.preventDefault();
+                $('.gender-text').blur();
+
+                if (currentFocus2 > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (item2) $(item2[currentFocus2]).parent().click();
+                }
+                $(this).parent().parent().parent().find('.dialog-dropdown-content').hide();
+
+            }
+
+        }
+
+        // console.log(item);
+
+
     })
 
     $('.dialog-content-two').click(function() {
